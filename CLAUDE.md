@@ -41,8 +41,10 @@ require one, that is your problem to solve, not theirs.
 10. Be token-frugal. Start a new task by reading only what it needs — the indexes, then
     the specific files; never re-read what a journal entry or doc already summarizes.
     Keep replies short and concrete; no unrequested elaboration. When the conversation
-    switches to an unrelated task, suggest the user run `/compact` — you cannot compact
-    the context yourself.
+    switches to an unrelated task, give the user a ready-to-paste, targeted compact
+    command naming what to keep and what to drop — e.g. `/compact keep the <new task>
+    requirements and current file state; drop the <finished topic> details` — you cannot
+    compact the context yourself.
 
 ## Stack policy
 
