@@ -9,7 +9,8 @@ needs your judgment.
 
 1. **Visual Studio Code** — free, from https://code.visualstudio.com
 2. **The "Claude Code" extension** — open VSCode, click the Extensions icon in the left
-   bar, search for "Claude Code", click Install. You will need a Claude account.
+   bar, search for "Claude Code", click Install. You will need a Claude account with a
+   paid plan.
 
 ## Getting started
 

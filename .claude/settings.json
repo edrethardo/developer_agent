@@ -1,13 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Read",
+      "Read(./**)",
+      "Read(~/.claude/**)",
       "Glob",
       "Grep",
       "Edit(./**)",
       "Write(./**)",
-      "Edit(~/.claude/**)",
-      "Write(~/.claude/**)",
+      "Edit(~/.claude/skills/**)",
+      "Write(~/.claude/skills/**)",
+      "Edit(~/.claude/CLAUDE.md)",
+      "Write(~/.claude/CLAUDE.md)",
       "Bash(ls:*)",
       "Bash(pwd)",
       "Bash(mkdir:*)",
@@ -35,7 +38,11 @@
       "Bash(git branch -D:*)",
       "Bash(git push:*)",
       "Bash(curl:*)",
-      "Bash(wget:*)"
+      "Bash(wget:*)",
+      "Edit(.claude/settings.json)",
+      "Write(.claude/settings.json)",
+      "Edit(.git/**)",
+      "Write(.git/**)"
     ]
   }
 }
