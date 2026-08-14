@@ -63,7 +63,8 @@ Design notes:
 
 - Generic skills ship **inside the template** (`_user-level/`) because folder-copy
   distribution allows no network fetch. Init copies them to `~/.claude/skills/`. Each
-  skill carries a `version` in frontmatter; init only overwrites an older version — never
+  skill carries a `version` in frontmatter (a plain integer, incremented on every change);
+  init only overwrites an older version — never
   downgrades, never touches skills it did not ship. Template improvements therefore
   propagate at the next init on that machine.
 - `src/` starts empty. The stack preference order lives in CLAUDE.md, not scaffolding.
