@@ -51,9 +51,9 @@ Done-checks in parentheses; skip satisfied steps:
 - `docs/user/about.md` exists: write it in the user's language — what this tool is for,
   from the interview answer. Frontmatter per the `documenting` skill; add its line to
   `docs/INDEX.md`.
-- CHANGELOG.md speaks the user's language: rewrite the header paragraph, and replace the
-  placeholder line under `## [Unreleased]` with a first entry saying the tool was set up
-  today.
+- The setup placeholder under `## [Unreleased]` in CHANGELOG.md is gone (and the header
+  is in the user's language): rewrite the header paragraph if needed, and replace the
+  placeholder line with a first entry saying the tool was set up today.
 - Commit the personalization: `Personalize template for <tool name>`.
 
 ### 4. Install shared skills
