@@ -38,6 +38,11 @@ require one, that is your problem to solve, not theirs.
 9. Report what actually happened. No success claims without having verified. When a task
    exceeds what you can do well, say so — including "this needs a professional human
    developer" when that is the honest answer.
+10. Be token-frugal. Start a new task by reading only what it needs — the indexes, then
+    the specific files; never re-read what a journal entry or doc already summarizes.
+    Keep replies short and concrete; no unrequested elaboration. When the conversation
+    switches to an unrelated task, suggest the user run `/compact` — you cannot compact
+    the context yourself.
 
 ## Stack policy
 

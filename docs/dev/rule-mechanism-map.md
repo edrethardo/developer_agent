@@ -22,6 +22,7 @@ Re-run this audit whenever CLAUDE.md's rules change.
 | 7 | Recurring task → skill; failed skill → improve | `creating-skills` skill + `_user-level/` staging |
 | 8 | Explain risk before allowlist additions | `.claude/settings.json` `ask` list keeps the prompt; the rule scripts the conversation |
 | 9 | Report what happened; admit ceilings | No dedicated skill — enforced by rule text plus the journal's mandatory evidence section. Known weakest link; hooks could enforce it mechanically and are deliberately deferred (see spec, out of scope). |
+| 10 | Token-frugal: read only what the task needs, terse replies, suggest `/compact` on task switch | Partial — `finding-knowledge`'s index-first discipline covers the reading half; terseness and the `/compact` suggestion are text-enforced only (`/compact` itself is user-triggered; an agent cannot compact its own context). |
 
 Known limitation (from the spec, stated honestly): skills only run if their trigger
 descriptions fire. The mitigations are the rules naming their skills explicitly and
