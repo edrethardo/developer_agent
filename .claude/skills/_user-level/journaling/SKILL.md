@@ -33,7 +33,8 @@ Body sections, in order:
 
 ## Index — not optional
 
-Add one line to `docs/journal/INDEX.md` under `## Entries`, newest first:
+Add one line to `docs/journal/INDEX.md` under `## Entries`, newest first (replacing the
+`_(none yet)_` placeholder if it is still there):
 
     - YYYY-MM-DD — [title](YYYY-MM-DD-slug.md) — outcome — tags — summary
 
