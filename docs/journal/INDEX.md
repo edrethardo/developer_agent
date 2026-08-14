@@ -15,4 +15,4 @@ missing from this index is a bug (`journaling` skill).
 
 ## Entries
 
-_(none yet)_
+- 2026-08-14 — [Developer agent template built and rehearsed end-to-end](2026-08-14-template-built.md) — done — meta, setup — All 13 plan tasks for the developer-agent template are complete, reviewed twice each, and the init flow was dry-run rehearsed on a scratch copy before shipping.

@@ -18,3 +18,4 @@ _(none yet)_
 ## Developer documentation (docs/dev/)
 
 - 2026-08-14 — [Rule-to-mechanism map](dev/rule-mechanism-map.md) — meta — audit that every CLAUDE.md hard rule has an operational mechanism.
+- 2026-08-14 — [OS coverage status](dev/os-coverage.md) — meta, setup — which OSes the init flow is actually verified on.
