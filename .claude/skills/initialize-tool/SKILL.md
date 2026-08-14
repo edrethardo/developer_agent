@@ -41,20 +41,27 @@ c. What should the tool be called?
 Done-checks in parentheses; skip satisfied steps:
 
 - Git repo exists (`.git/` present): else `git init -b main`.
-- Git identity works (`git config user.name` prints something): else set it REPO-LOCALLY
-  — `git config user.name "<tool name>"` and `git config user.email
-  "<tool-slug>@local.invalid"`. Never `--global`; the user is not asked.
+- Git identity works (BOTH `git config user.name` AND `git config user.email` print
+  something — an identity someone already configured machine-wide is fine): else set the
+  missing ones REPO-LOCALLY — `git config user.name "<tool name>"`, `git config
+  user.email "<tool-slug>@local.invalid"`. Never `--global`; the user is not asked.
 - Pristine baseline committed (`git log` shows at least one commit): else commit
   everything as "Initial commit: pristine template" BEFORE any personalization edit.
+  If the tree was ALREADY personalized when this first commit happens (crash path),
+  commit it as `Initial commit (post-crash, not pristine)` instead — never label a
+  modified tree pristine.
 - CLAUDE.md personalized (no `<… set at init>` markers remain): write tool name, one-line
   description, user language.
 - `docs/user/about.md` exists: write it in the user's language — what this tool is for,
-  from the interview answer. Frontmatter per the `documenting` skill; add its line to
-  `docs/INDEX.md`.
+  from the interview answer. Frontmatter per the `documenting` skill (tag: `docs`); add
+  its line to `docs/INDEX.md` (replacing the `_(none yet)_` placeholder if present). If
+  resuming and the interview answer is no longer available, re-ask question (b) rather
+  than padding the one-liner.
 - The setup placeholder under `## [Unreleased]` in CHANGELOG.md is gone (and the header
   is in the user's language): rewrite the header paragraph if needed, and replace the
   placeholder line with a first entry saying the tool was set up today.
-- Commit the personalization: `Personalize template for <tool name>`.
+- Commit the personalization: `Personalize template for <tool name>` (skip if the tree
+  is clean).
 
 ### 4. Install shared skills
 
@@ -64,7 +71,8 @@ For each folder in `.claude/skills/_user-level/`, target `~/.claude/skills/<name
   file tools (pre-approved paths); never shell out to `cp`.
 - Present → compare the integer `version:` in both SKILL.md frontmatters; copy (the same
   way) only if the shipped version is GREATER. Never downgrade. Never touch skills this
-  template didn't ship.
+  template didn't ship. When upgrading, also delete files in the target folder that the
+  shipped folder no longer contains.
 
 ### 5. Machine-wide CLAUDE.md block
 
@@ -76,11 +84,13 @@ delimiters. Rules:
   real entry.
 - Block exists with a LOWER version in the start delimiter → replace the block's content
   (delimiter to delimiter) with the current template, preserving the existing tool list.
+  Concretely: write the new template, then replace its placeholder list line with the
+  old block's tool list.
 - Block exists with an EQUAL or HIGHER version → leave its content alone.
 - Then ensure THIS tool is listed exactly once, keyed by absolute path: path already
   listed → leave it; otherwise append one line `- <tool name> — <absolute path>`.
 
-Block template (verbatim):
+Block template (indented here only to mark it as a template — write it UNINDENTED):
 
     <!-- developer-agent:start v1 -->
     ## Developer-agent tool repos
@@ -96,21 +106,24 @@ Block template (verbatim):
 
 ### 6. Permissions explainer
 
-Skip if the init journal entry already exists (this ran before). One short paragraph,
-user's language, own message: routine work runs without asking; unusual actions show a
-permission box; a box means "stop and consider" — the user can always ask "what does
-this mean?" and get a plain answer first. Adding something to the always-allowed list is
-possible, and the worst case gets explained before it happens (CLAUDE.md hard rule 8).
+Skip if a `docs/journal/*-init.md` entry already exists (this ran before). One short
+paragraph, user's language, own message: routine work runs without asking; unusual
+actions show a permission box; a box means "stop and consider" — the user can always ask
+"what does this mean?" and get a plain answer first. Adding something to the
+always-allowed list is possible, and the worst case gets explained before it happens
+(CLAUDE.md hard rule 8).
 
 ### 7. Close out
 
-- Write the first journal entry (per the `journaling` skill) documenting this init:
-  answers given, versions installed, anything skipped. Skip if it already exists.
-- Remove the `<!-- UNINITIALIZED -->` line from `docs/journal/INDEX.md` — LAST file edit
-  of init.
-- Commit: `Initialize <tool name>`.
+- Write the first journal entry — file `docs/journal/YYYY-MM-DD-init.md` — per the
+  `journaling` skill, documenting this init: answers given, versions installed, anything
+  skipped. Skip if a `*-init.md` entry already exists.
+- Then, as a separate final edit (never combined with the index-line edit above), remove
+  the `<!-- UNINITIALIZED -->` line from `docs/journal/INDEX.md` — the LAST file edit of
+  init.
+- Commit: `Initialize <tool name>` (skip if the tree is clean).
 - Only now suggest renaming the folder to the tool's name: close VSCode, rename in the
-  file manager, reopen. Skippable. If they do it, correct the path line in
-  `~/.claude/CLAUDE.md` next session (the block itself warns it may be stale). An agent
-  must not rename its own working directory.
+  file manager, reopen. Skippable. If they rename, the path line in `~/.claude/CLAUDE.md`
+  goes stale — acceptable by design: the block itself warns that paths may be stale and
+  must be verified before use. An agent must not rename its own working directory.
 - Hand over: "Setup's done. Tell me what you'd like the tool to do first."
