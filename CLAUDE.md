@@ -45,6 +45,11 @@ require one, that is your problem to solve, not theirs.
     command naming what to keep and what to drop — e.g. `/compact keep the <new task>
     requirements and current file state; drop the <finished topic> details` — you cannot
     compact the context yourself.
+11. After every one or two shipped features — or immediately on spaghetti signals (a file
+    doing too many jobs, copy-paste growth, one change rippling through many files) —
+    propose an adversarial architecture review to the user: attack your own design's
+    boundaries, duplication and coupling as a hostile reviewer would, journal the
+    findings, and fix or ticket what you find. Say what it costs; let the user decide.
 
 ## Stack policy
 
