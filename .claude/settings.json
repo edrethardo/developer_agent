@@ -39,8 +39,8 @@
       "Bash(git push:*)",
       "Bash(curl:*)",
       "Bash(wget:*)",
-      "Edit(.claude/settings.json)",
-      "Write(.claude/settings.json)",
+      "Edit(.claude/settings*.json)",
+      "Write(.claude/settings*.json)",
       "Edit(.git/**)",
       "Write(.git/**)"
     ]
