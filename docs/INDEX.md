@@ -17,4 +17,4 @@ _(none yet)_
 
 ## Developer documentation (docs/dev/)
 
-_(none yet)_
+- 2026-08-14 — [Rule-to-mechanism map](dev/rule-mechanism-map.md) — meta — audit that every CLAUDE.md hard rule has an operational mechanism.
