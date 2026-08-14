@@ -16,6 +16,8 @@
       "Bash(mkdir:*)",
       "Bash(uname:*)",
       "Bash(git --version)",
+      "Bash(git config user.name:*)",
+      "Bash(git config user.email:*)",
       "Bash(git status:*)",
       "Bash(git diff:*)",
       "Bash(git log:*)",
