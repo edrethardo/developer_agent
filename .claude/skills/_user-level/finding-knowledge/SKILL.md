@@ -13,8 +13,8 @@ in two indexes; consult them before touching code.
 
 1. `docs/journal/INDEX.md` — has a past session touched this? Open the matching entries.
 2. `docs/INDEX.md` — is it documented? Open the matching docs.
-3. Follow tags: pick the relevant tag in `docs/TAGS.md`, grep for it across `docs/`
-   frontmatter (`grep -rl "tags:.*<tag>" docs/`).
+3. Follow tags: pick the relevant tag in `docs/TAGS.md`, then search `tags:.*<tag>` across
+   `docs/` with the Grep tool (files-with-matches mode).
 4. Only then grep or read the codebase.
 
 ## Rules

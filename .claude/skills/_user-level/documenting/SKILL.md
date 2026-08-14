@@ -19,7 +19,7 @@ Docs updated "later" are docs never updated. Same session, same commit as the ch
   What changed FOR THE USER. Internal refactors, test-only and doc-only changes are
   omitted.
 
-## Frontmatter — every file in docs/
+## Frontmatter — every file in docs/user/ and docs/dev/
 
     ---
     title: <one line>
@@ -30,9 +30,11 @@ Docs updated "later" are docs never updated. Same session, same commit as the ch
 
 One schema everywhere means one grep pattern searches everything.
 
+(Journal entries under `docs/journal/` follow the `journaling` skill instead: same schema plus `outcome`, indexed in `docs/journal/INDEX.md`.)
+
 ## Indexes — not optional
 
-Every new or renamed doc gets its line in `docs/INDEX.md` (same commit). An unindexed
+Every new or renamed doc under `docs/user/` or `docs/dev/` gets its line in `docs/INDEX.md` (same commit), format: `- YYYY-MM-DD — [title](path) — tags — summary`. An unindexed
 doc is a bug.
 
 ## When docs outgrow themselves

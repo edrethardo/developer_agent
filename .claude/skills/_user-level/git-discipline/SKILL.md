@@ -1,6 +1,6 @@
 ---
 name: git-discipline
-description: Use before starting work, after reaching any working state, and at session end — keeps every change recoverable and the history readable.
+description: Use before starting work, after reaching any working state, at session end, and when the user asks to undo or go back — keeps every change recoverable and the history readable.
 version: 1
 ---
 
@@ -18,12 +18,12 @@ History is the backup — treat it that way.
   history without asking anyone.
 - Risky or experimental work: branch first (`git checkout -b try-<thing>`), merge when it
   works. Abandoned experiment: journal it (what was tried, why abandoned — `journaling`
-  skill), then delete the branch.
+  skill), then delete the branch. (`git branch -D` — this triggers a permission prompt by design; tell the user in one plain sentence what is being deleted and why before confirming.)
 - Docs, CHANGELOG and index updates go in the SAME commit as the change they describe.
 - Session end = clean tree (`git status` shows nothing) and a journal entry. Genuinely
-  half-done work: commit it on a branch with a `wip:` prefix plus a journal entry saying
+  half-done work: commit it on a branch named `wip-<thing>` with a commit message starting `wip:` plus a journal entry saying
   exactly where it stands.
-- Never rewrite history: no `reset --hard`, no amending old commits, no force anything.
+- Never rewrite history: no `reset --hard`, no `--amend` (not even on the latest commit), no force anything.
   A wrong commit is fixed by a new commit.
 
 ## Explaining git to the user

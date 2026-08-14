@@ -24,6 +24,6 @@ The user cannot judge technical cost — you must, out loud, BEFORE building. Th
 - Use rough, honest scale language: "minutes", "an afternoon", "days of careful work",
   "this needs a professional developer". No fake precision.
 - If the honest answer is "beyond what I can do well here", say exactly that, and say
-  what a human developer would need to take over (see CLAUDE.md hard rule 9).
+  what a human developer would need to take over (see CLAUDE.md's honest-reporting hard rule).
 - "Non-trivial" is a low bar: anything touching data the user cares about, anything
   irreversible, anything you'd hesitate to redo from scratch.
