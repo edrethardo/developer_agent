@@ -15,7 +15,10 @@ needs your judgment.
 ## Getting started
 
 1. Copy this whole folder somewhere permanent. The copy becomes YOUR tool — make a fresh
-   copy of the original starter kit for each new tool you want to build.
+   copy of the original starter kit for each new tool you want to build. Pick a plain
+   local folder (for example `C:\Tools\` on Windows or a folder in your home directory)
+   — avoid Desktop, Documents or anything synced by OneDrive/Dropbox: sync tools fight
+   with the change-history system this kit relies on and can quietly corrupt it.
 2. Open the folder in VSCode (File → Open Folder…).
 3. Open Claude Code and say hello — in whatever language you prefer. The assistant will
    introduce itself and set everything up by asking you a few questions. That's it.
@@ -29,4 +32,7 @@ needs your judgment.
   language. The `docs/` folder holds the manuals. The AI also keeps a work journal for
   itself so it never forgets why something was done.
 - **You never need the terminal.** If anything ever seems to require it, say so — that's
-  a bug in this starter kit, not something you're supposed to do.
+  a bug in this starter kit, not something you're supposed to do. One honest exception:
+  if your computer doesn't yet have "git" (the change-history program this kit depends
+  on), the assistant will walk you through installing that one program — a few clicks in
+  a normal installer, no terminal.

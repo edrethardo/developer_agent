@@ -1,7 +1,7 @@
 ---
 name: documenting
-description: Use after any user-visible change or architectural decision — update user docs, dev docs, CHANGELOG and the indexes in the same session as the change.
-version: 1
+description: In developer-agent tool repos (the repo carries docs/journal/INDEX.md): use after any user-visible change or architectural decision — update user docs, dev docs, CHANGELOG and the indexes in the same session as the change.
+version: 2
 ---
 
 # Documenting

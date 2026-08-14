@@ -7,10 +7,6 @@
       "Grep",
       "Edit(./**)",
       "Write(./**)",
-      "Edit(~/.claude/skills/**)",
-      "Write(~/.claude/skills/**)",
-      "Edit(~/.claude/CLAUDE.md)",
-      "Write(~/.claude/CLAUDE.md)",
       "Bash(ls:*)",
       "Bash(pwd)",
       "Bash(mkdir:*)",
@@ -44,7 +40,9 @@
       "Edit(.claude/settings*.json)",
       "Write(.claude/settings*.json)",
       "Edit(.git/**)",
-      "Write(.git/**)"
+      "Write(.git/**)",
+      "Edit(~/.claude/**)",
+      "Write(~/.claude/**)"
     ]
   }
 }

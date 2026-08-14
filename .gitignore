@@ -1,0 +1,12 @@
+# OS droppings that folder copies and file managers leave behind
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local, machine-specific Claude Code settings (never shared)
+.claude/settings.local.json
+
+# Common build/runtime caches — extend per stack in docs/dev/stack.md
+__pycache__/
+*.pyc
+node_modules/

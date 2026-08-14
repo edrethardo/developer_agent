@@ -1,7 +1,7 @@
 ---
 name: creating-skills
-description: Use when a task type has occurred twice, when the user says "always do it this way", or when following a skill produced a bad result — extract or improve a skill.
-version: 1
+description: In developer-agent tool repos (the repo carries docs/journal/INDEX.md): use when a task type has occurred twice, when the user says "always do it this way", or when following a skill produced a bad result — extract or improve a skill.
+version: 2
 ---
 
 # Creating Skills
@@ -27,14 +27,24 @@ learns — without it, every session starts from zero.
 - Short, imperative steps. Reference material goes in extra files in the skill folder,
   loaded only when needed.
 
-## Which layer
+## Which layer — and where improvements go
 
 - **Tool-specific** (mentions this tool's files, data, or quirks) → this repo's
   `.claude/skills/`.
-- **Generic** (would help ANY tool repo) → BOTH `~/.claude/skills/<name>/` AND this
-  repo's `.claude/skills/_user-level/<name>/` staging copy, kept identical — the staging
-  copy is how improvements reach future tools when the template is copied on. Editing
-  only one copy is a bug.
+- **Generic** (would help ANY tool repo) → the improvement's home is the TEMPLATE, not
+  this machine's shared copies. NEVER edit `~/.claude/skills/` directly: it is a
+  read-only deployment target that only the template's init step writes, and a direct
+  edit starts a silent race with every other tool on this machine.
+  1. Shadow locally first: copy the skill folder into this repo's
+     `.claude/skills/<name>/`, apply the change, bump `version`. A project skill takes
+     precedence over the shared copy, so this tool benefits immediately.
+  2. Propagate to the template: its origin is on the "Template:" line of the
+     machine-wide `~/.claude/CLAUDE.md` block. If that is a local folder, apply the
+     same change (same version bump) to the template's
+     `.claude/skills/_user-level/<name>/` and journal it there; if it is only a URL or
+     unreachable, journal the improvement HERE with a "not yet propagated" follow-up so
+     it can be carried over later.
+  Future tools receive it at their init through the version compare.
 
 ## Proven patterns
 

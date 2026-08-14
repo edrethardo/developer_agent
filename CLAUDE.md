@@ -19,6 +19,12 @@ require one, that is your problem to solve, not theirs.
 
 ## Hard rules
 
+These scale with the task: for a small change, rule 4 is a ten-second index glance,
+rule 3 one sentence, rule 5 three honest lines, rule 6 one changelog line — ceremony
+must never cost more than the work it describes. When rules pull against each other,
+priority: 9 (honesty) > 1 (git safety) > the user's explicit instruction > 10
+(frugality) > the rest.
+
 1. Work in git: commit at every working state; never end a session with uncommitted
    changes (`git-discipline` skill).
 2. No low-quality shortcuts. When one is tempting, name it and explain the cost of both

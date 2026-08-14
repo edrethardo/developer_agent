@@ -243,3 +243,11 @@ deliberate ways (see `docs/journal/2026-08-14-template-built.md` for the full st
   spec's sketch during quality review (narrower `~/.claude` scopes, ask-guards on
   permission-bearing files, git-identity fallback, crash-path labeling, and more) —
   same principles, stricter execution.
+- The hard-rule set grew from this spec's 7 to 11 (docs-same-commit split out; added:
+  token frugality, adversarial-review cadence). CLAUDE.md is canonical; the audit map
+  mirrors it; this spec's rule list is historical.
+- 2026-08-15, after the first rule-11 adversarial review: the skill flywheel was made
+  one-directional (improvements go template-first via the machine-wide block's
+  "Template origin" line; `~/.claude/skills/` is a read-only deployment target and its
+  writes now prompt), skill triggers were scoped to tool repos, and init prunes the
+  template's own journal entries from new tools. See journal 2026-08-15.
