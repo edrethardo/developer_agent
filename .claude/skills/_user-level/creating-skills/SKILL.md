@@ -36,15 +36,19 @@ learns — without it, every session starts from zero.
   read-only deployment target that only the template's init step writes, and a direct
   edit starts a silent race with every other tool on this machine.
   1. Shadow locally first: copy the skill folder into this repo's
-     `.claude/skills/<name>/`, apply the change, bump `version`. A project skill takes
-     precedence over the shared copy, so this tool benefits immediately.
-  2. Propagate to the template: its origin is on the "Template:" line of the
+     `.claude/skills/<name>/`, apply the change, bump `version`. Project skills take
+     precedence over same-named user-level ones, so this tool benefits immediately (if
+     the harness ever resolves otherwise, rename the project copy and use it by name).
+  2. Propagate to the template: its origin is on the "Template origin:" line of the
      machine-wide `~/.claude/CLAUDE.md` block. If that is a local folder, apply the
      same change (same version bump) to the template's
      `.claude/skills/_user-level/<name>/` and journal it there; if it is only a URL or
      unreachable, journal the improvement HERE with a "not yet propagated" follow-up so
      it can be carried over later.
-  Future tools receive it at their init through the version compare.
+  3. Retire the shadow: whenever the shared copy in `~/.claude/skills/<name>/` reaches a
+     `version` ≥ your shadow's, delete the shadow and journal it — a lingering shadow
+     pins this tool to an aging fork forever.
+  Future tools receive the improvement at their init through the version compare.
 
 ## Proven patterns
 

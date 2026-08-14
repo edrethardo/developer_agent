@@ -60,7 +60,10 @@ narrated one-time prompts are the honest price.
 
 ## Follow-ups
 
-- The deployed Werkbank tool still runs v1 skills and a v1 machine-wide block; they
-  upgrade at the next template init on this machine (or its owner session can pull the
-  v2 template deliberately).
-- Re-verification by the original adversarial reviewer pending (this session).
+- The deployed Werkbank tool still runs v1 skills and a v1 machine-wide block; those two
+  upgrade at the next template init on this machine. CORRECTION (same day, from the
+  re-verification): its project `settings.json` and CLAUDE.md have NO propagation
+  channel and never upgrade on their own — the owning session was asked to patch them
+  deliberately (see 2026-08-15-re-verification-round.md).
+- Re-verification by the original adversarial reviewer: done, see
+  2026-08-15-re-verification-round.md.

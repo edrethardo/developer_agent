@@ -15,6 +15,8 @@ missing from this index is a bug (`journaling` skill).
 
 ## Entries
 
+- 2026-08-15 — [Re-verification round — eight of ten closed, seven new findings fixed](2026-08-15-re-verification-round.md) — done — meta, bugfix, decision — reviewer confirmed the release, caught its self-contradiction and missing deployment path; all new findings fixed, Werkbank patch delegated.
+
 - 2026-08-15 — [Fixes for all ten adversarial-review findings](2026-08-15-adversarial-review-fixes.md) — done — meta, decision, bugfix — template-first flywheel, prompted ~/.claude writes, scoped triggers, content-aware pristine check, pruned template history.
 
 - 2026-08-15 — [First adversarial architecture review of the shipped template](2026-08-15-adversarial-architecture-review.md) — done — meta, investigation, decision — ten findings, three structural: disconnected skill flywheel, shared-skill write race, unscoped skill triggers.

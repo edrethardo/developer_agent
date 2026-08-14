@@ -23,7 +23,9 @@ These scale with the task: for a small change, rule 4 is a ten-second index glan
 rule 3 one sentence, rule 5 three honest lines, rule 6 one changelog line — ceremony
 must never cost more than the work it describes. When rules pull against each other,
 priority: 9 (honesty) > 1 (git safety) > the user's explicit instruction > 10
-(frugality) > the rest.
+(frugality) > the rest. Git safety overruling the user is deliberate and bounded: if
+they say "don't commit", park the work on a `wip-` branch, say so, and leave `main`
+untouched — never leave changes loose, never fight the user beyond that.
 
 1. Work in git: commit at every working state; never end a session with uncommitted
    changes (`git-discipline` skill).
@@ -77,5 +79,5 @@ Record the choice and its why in `docs/dev/stack.md` when `src/` gets its first 
 - `docs/journal/` — the work journal (English), indexed in `docs/journal/INDEX.md`
 - `docs/TAGS.md` — the only allowed tags for docs/journal frontmatter
 - `CHANGELOG.md` — user-facing changes (their language)
-- `.claude/skills/` — this tool's own skills; `_user-level/` is the staging copy of the
-  shared skills (edit both copies together — see `creating-skills`)
+- `.claude/skills/` — this tool's own skills; `_user-level/` is the read-only delivery
+  copy of the shared skills (improvements go template-first — see `creating-skills`)

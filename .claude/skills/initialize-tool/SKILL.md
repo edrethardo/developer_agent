@@ -67,15 +67,26 @@ Done-checks in parentheses; skip satisfied steps:
 - The setup placeholder under `## [Unreleased]` in CHANGELOG.md is gone (and the header
   is in the user's language): rewrite the header paragraph if needed, and replace the
   placeholder line with a first entry saying the tool was set up today.
-- Template build history pruned (no `docs/journal/` entries dated before this init
-  remain): delete the template's own journal entries and their index lines — they
-  describe the TEMPLATE's construction, not this tool, and remain available in the
-  template repo and in this repo's baseline commit. Deletion shows a permission box;
-  say in one sentence why.
+- Template build history pruned: delete exactly those `docs/journal/` entry files
+  (never `INDEX.md`) that are byte-identical to a file in this repo's FIRST commit —
+  those are the TEMPLATE's own memoirs, shipped with the copy; anything that differs is
+  this tool's real work and stays. Remove the deleted entries' index lines too. The
+  memoirs remain in the template repo and in the first commit. Deletion shows a
+  permission box; say in one sentence why.
 - Commit the personalization: `Personalize template for <tool name>` (skip if the tree
   is clean).
 
-### 4. Install shared skills
+### 4. Permissions explainer
+
+Skip if a `docs/journal/*-init.md` entry already exists (this ran before). One short
+paragraph, user's language, own message, BEFORE the installs below cause any permission
+boxes: routine work runs without asking; unusual actions show a permission box; a box
+means "stop and consider" — the user can always ask "what does this mean?" and get a
+plain answer first. Adding something to the always-allowed list is possible, and the
+worst case gets explained before it happens (the allowlist rule in CLAUDE.md's hard
+rules).
+
+### 5. Install shared skills
 
 First tell the user in one sentence: several permission boxes will now appear — each is
 this setup copying one skill file into `~/.claude/skills/`, the shared folder every tool
@@ -90,7 +101,7 @@ folder in `.claude/skills/_user-level/`, target `~/.claude/skills/<name>/`:
   shipped folder no longer contains — again a permission box; tell the user in one
   plain sentence what is being removed and why before confirming.
 
-### 5. Machine-wide CLAUDE.md block
+### 6. Machine-wide CLAUDE.md block
 
 File: `~/.claude/CLAUDE.md` — create it if missing. NEVER modify anything outside the
 delimiters. Rules:
@@ -125,15 +136,6 @@ Block template (indented here only to mark it as a template — write it UNINDEN
     Tool repos on this machine (list may be stale — verify a path exists before use):
     - <tool name> — <absolute path>
     <!-- developer-agent:end -->
-
-### 6. Permissions explainer
-
-Skip if a `docs/journal/*-init.md` entry already exists (this ran before). One short
-paragraph, user's language, own message: routine work runs without asking; unusual
-actions show a permission box; a box means "stop and consider" — the user can always ask
-"what does this mean?" and get a plain answer first. Adding something to the
-always-allowed list is possible, and the worst case gets explained before it happens
-(the allowlist rule in CLAUDE.md's hard rules).
 
 ### 7. Close out
 
