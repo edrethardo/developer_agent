@@ -1,5 +1,9 @@
 # Developer Agent Template Implementation Plan
 
+> **STATUS: EXECUTED 2026-08-14 — this plan is historical record, not pending work.**
+> All 13 tasks are complete and reviewed; see `docs/journal/2026-08-14-template-built.md`.
+> Some files were deliberately improved beyond this plan's verbatim content during review.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build the template repository that non-technical users copy to create internal tools with Claude Code: lean CLAUDE.md, curated permissions, six user-level discipline skills, a conversational init skill, and a grep-searchable docs/journal system.

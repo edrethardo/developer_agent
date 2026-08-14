@@ -72,7 +72,9 @@ For each folder in `.claude/skills/_user-level/`, target `~/.claude/skills/<name
 - Present → compare the integer `version:` in both SKILL.md frontmatters; copy (the same
   way) only if the shipped version is GREATER. Never downgrade. Never touch skills this
   template didn't ship. When upgrading, also delete files in the target folder that the
-  shipped folder no longer contains.
+  shipped folder no longer contains — that deletion is not pre-approved, so a permission
+  box will appear: tell the user in one plain sentence what is being removed and why
+  before confirming.
 
 ### 5. Machine-wide CLAUDE.md block
 

@@ -230,3 +230,16 @@ professional developer" when true.
   dependency-free equivalent of its search-before-grep discipline).
 - Any network/git-host features (remotes, PRs, CI).
 - Skill distribution beyond "copied at init" (no registry, no auto-update).
+
+## Post-implementation notes (2026-08-14)
+
+Recorded after execution; the implementation deviates from this spec in two reviewed,
+deliberate ways (see `docs/journal/2026-08-14-template-built.md` for the full story):
+
+- "Uniform frontmatter on every file under `docs/`" is implemented as: every file under
+  `docs/user/`, `docs/dev/` and `docs/journal/`. Files under `docs/superpowers/`
+  (specs/plans, this file included) follow the superpowers naming convention instead.
+- The permission allowlist and the `initialize-tool` skill were hardened beyond this
+  spec's sketch during quality review (narrower `~/.claude` scopes, ask-guards on
+  permission-bearing files, git-identity fallback, crash-path labeling, and more) —
+  same principles, stricter execution.
