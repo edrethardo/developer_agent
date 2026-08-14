@@ -14,7 +14,7 @@ Re-run this audit whenever CLAUDE.md's rules change.
 | # | Hard rule (short) | Mechanism |
 |---|---|---|
 | 1 | Commit every working state; end clean | `git-discipline` skill |
-| 2 | No low-quality shortcuts; name the temptation | `explaining-complexity` skill (cost of both paths) + rule 9's verification demand |
+| 2 | No low-quality shortcuts; name the temptation | Partial — `explaining-complexity` bans silently building the complex version or quietly delivering less, which covers shortcuts at scoping time; mid-task temptations rely on rule text + rule 9's verification demand |
 | 3 | State complexity before building | `explaining-complexity` skill |
 | 4 | Search before investigating | `finding-knowledge` skill + the two mandatory indexes |
 | 5 | Journal every session | `journaling` skill + indexed `docs/journal/` |
