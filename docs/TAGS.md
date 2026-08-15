@@ -17,5 +17,6 @@ is a bug.
 - `investigation` — research or debugging sessions and what they found
 - `decision` — architecture, stack, or design decisions and their reasons
 - `skill` — creating or improving skills
+- `testing` — tests, test strategy, and what they caught
 - `docs` — documentation work itself
 - `meta` — the template/scaffolding, not the tool built with it

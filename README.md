@@ -31,6 +31,9 @@ needs your judgment.
 - **Everything is written down.** `CHANGELOG.md` tells you what changed for you, in your
   language. The `docs/` folder holds the manuals. The AI also keeps a work journal for
   itself so it never forgets why something was done.
+- **Where this kit comes from.** The original starter kit, its full history and any
+  newer version live at https://github.com/edrethardo/developer_agent — useful if you
+  ever hand this tool to a professional developer.
 - **You never need the terminal.** If anything ever seems to require it, say so — that's
   a bug in this starter kit, not something you're supposed to do. One honest exception:
   if your computer doesn't yet have "git" (the change-history program this kit depends

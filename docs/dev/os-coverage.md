@@ -1,19 +1,27 @@
 ---
-title: OS coverage status
+title: Operating system support
 date: 2026-08-14
 tags: [meta, setup]
-summary: Which operating systems the init flow has actually been verified on.
+summary: Which operating systems the first-run setup has actually been verified on, and what to do if yours is not one of them.
 ---
 
-# OS Coverage
+# Operating System Support
 
-The template assumes nothing about the target OS, but verification so far is:
+This kit assumes nothing about your operating system, but be honest about what has
+actually been tried:
 
 | OS | Status |
 |---|---|
-| Linux | Init rehearsed by hand, then run end-to-end by real sessions in an isolated sandbox |
-| Windows | Init path reviewed on paper only — VERIFY ON FIRST REAL DEPLOYMENT |
-| macOS | Init path reviewed on paper only — VERIFY ON FIRST REAL DEPLOYMENT |
+| Linux | First-run setup verified end-to-end |
+| Windows | Reviewed carefully, never run for real — YOU MAY BE THE FIRST |
+| macOS | Reviewed carefully, never run for real — YOU MAY BE THE FIRST |
 
-First deployment on an unverified OS: treat init as suspect, journal every deviation,
-and fix the `initialize-tool` skill (bump its version) so the next machine benefits.
+If you are on Windows or macOS and something in the setup goes wrong, that is worth
+knowing about, not worth hiding: the assistant should write down exactly what happened
+in `docs/journal/`, fix the `initialize-tool` skill in `.claude/skills/`, bump that
+skill's version, and — if you got this kit from a shared template — pass the fix back so
+the next person does not hit it.
+
+Two known Windows specifics: git is usually not installed (a normal installer, a few
+clicks), and after installing it, VSCode must be fully closed and reopened before it
+becomes visible.

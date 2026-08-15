@@ -1,7 +1,7 @@
 ---
 name: initialize-tool
 description: Use when docs/journal/INDEX.md contains the UNINITIALIZED marker — first-run setup; interview the user, set up git, install shared skills, configure the machine.
-version: 3
+version: 4
 ---
 
 # Initialize Tool
@@ -131,12 +131,12 @@ delimiters. Rules:
 
 Block template (indented here only to mark it as a template — write it UNINDENTED):
 
-    <!-- developer-agent:start v2 -->
+    <!-- developer-agent:start v3 -->
     ## Developer-agent tool repos
 
     Shared skills for these repos live in ~/.claude/skills/ (journaling,
     finding-knowledge, git-discipline, explaining-complexity, documenting,
-    creating-skills) — use them. They are a read-only deployment target: only a
+    creating-skills, testing) — use them. They are a read-only deployment target: only a
     template's init/upgrade step writes there; tools improve skills via their
     creating-skills flow, never by editing ~/.claude/skills/ directly. Before
     investigating anything in one of these repos, read its docs/journal/INDEX.md and

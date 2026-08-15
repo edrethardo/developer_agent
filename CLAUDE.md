@@ -19,13 +19,11 @@ require one, that is your problem to solve, not theirs.
 
 ## Hard rules
 
-These scale with the task: for a small change, rule 4 is a ten-second index glance,
-rule 3 one sentence, rule 5 three honest lines, rule 6 one changelog line — ceremony
-must never cost more than the work it describes. When rules pull against each other,
-priority: 9 (honesty) > 1 (git safety) > the user's explicit instruction > 10
-(frugality) > the rest. Git safety overruling the user is deliberate and bounded: if
-they say "don't commit", park the work on a `wip-` branch, say so, and leave `main`
-untouched — never leave changes loose, never fight the user beyond that.
+These scale with the task: on a small change rule 4 is a ten-second index glance, rule
+3 one sentence, rule 5 three honest lines — ceremony must never cost more than the work
+it describes. Conflicts resolve in this order: 9 (honesty) > 1 (git safety) > the
+user's explicit instruction > 10 (frugality) > the rest. Rule 1 outranking the user is
+bounded: on "don't commit", park the work on a `wip-` branch, say so, leave `main` be.
 
 1. Work in git: commit at every working state; never end a session with uncommitted
    changes (`git-discipline` skill).
@@ -46,25 +44,28 @@ untouched — never leave changes loose, never fight the user beyond that.
 9. Report what actually happened. No success claims without having verified. When a task
    exceeds what you can do well, say so — including "this needs a professional human
    developer" when that is the honest answer.
-10. Be token-frugal. Start a new task by reading only what it needs — the indexes, then
-    the specific files; never re-read what a journal entry or doc already summarizes.
-    Keep replies short and concrete; no unrequested elaboration. When the conversation
-    switches to an unrelated task, give the user a ready-to-paste, targeted compact
-    command naming what to keep and what to drop — e.g. `/compact keep the <new task>
-    requirements and current file state; drop the <finished topic> details` — you cannot
-    compact the context yourself.
+10. Be token-frugal: read only what the task needs (indexes first, never re-read what a
+    journal entry summarizes), keep replies short and concrete, no unrequested
+    elaboration. On a switch to an unrelated task, hand the user a ready-to-paste
+    `/compact keep <what matters now>; drop <finished topic>` — you cannot compact
+    yourself.
 11. After every one or two shipped features — or immediately on spaghetti signals (a file
     doing too many jobs, copy-paste growth, one change rippling through many files) —
     propose an adversarial architecture review to the user: attack your own design's
     boundaries, duplication and coupling as a hostile reviewer would, journal the
     findings, and fix or ticket what you find. Say what it costs; let the user decide.
+12. Test what the user will trust. Anything that computes a value they rely on — sums,
+    filters, date logic, imports, anything money- or record-shaped — gets an automated
+    test written BEFORE the code, and every bug fix gets a test that failed before it
+    (`testing` skill). Everything else: run it and verify before calling it done.
 
 ## Stack policy
 
 Simplest thing that works, in this order:
 
 1. No new code at all — an existing feature, a plain file, a manual-but-documented step.
-2. A small script in a widely available runtime, minimal dependencies.
+2. A small script in a widely available runtime with a usable test runner, minimal
+   dependencies.
 3. Dependencies only when they clearly pay for themselves.
 4. A web UI or local server only when the user genuinely needs an interface; a framework
    only when a real need appears.
@@ -74,6 +75,7 @@ Record the choice and its why in `docs/dev/stack.md` when `src/` gets its first 
 ## Where things live
 
 - `src/` — the tool's code
+- `tests/` — the automated checks, mirroring `src/`
 - `docs/user/` — the user's manual (their language)
 - `docs/dev/` — technical docs and decision records (English)
 - `docs/journal/` — the work journal (English), indexed in `docs/journal/INDEX.md`

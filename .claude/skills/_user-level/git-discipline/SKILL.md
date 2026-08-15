@@ -1,7 +1,7 @@
 ---
 name: git-discipline
 description: In developer-agent tool repos (the repo carries docs/journal/INDEX.md): use before starting work, after reaching any working state, at session end, and when the user asks to undo or go back — keeps every change recoverable and the history readable.
-version: 2
+version: 3
 ---
 
 # Git Discipline
@@ -12,7 +12,8 @@ History is the backup — treat it that way.
 ## Rules
 
 - `main` is the working branch; commit directly for routine work.
-- Commit at every working state. Small commits beat big ones.
+- Commit at every working state — "working" means the checks pass (`testing` skill),
+  not merely that the file was saved. Small commits beat big ones.
 - Message format: first line = what changed for the tool; body = why, when the why isn't
   obvious. English. Written so a future session — or a hired developer — can follow the
   history without asking anyone.
