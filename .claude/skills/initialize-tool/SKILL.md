@@ -1,7 +1,7 @@
 ---
 name: initialize-tool
 description: Use when docs/journal/INDEX.md contains the UNINITIALIZED marker — first-run setup; interview the user, set up git, install shared skills, configure the machine.
-version: 8
+version: 10
 ---
 
 # Initialize Tool
@@ -27,26 +27,31 @@ report. A session that grants itself rights has removed the user's only safeguar
 (Edge case: init edits sitting uncommitted with NO marker means init crashed between its
 last two actions — just commit them as `Initialize <tool name>` and move on.)
 
-## Step 0 — which of the three situations is this?
+## Step 0 — this folder is configuration, never a workspace
 
-An `AGENTS.md` at the root means this folder is a fresh copy of the starter kit and
-nothing has been decided yet. Ask the user once, in plain language, which they want:
+No tool is ever set up in this folder, and never in a subdirectory of it: this repo is
+the configuration, and a project living inside it would be swallowed by the kit's own
+history. Ask the user which of these they want:
 
-a. **Build a new tool right here** — this folder becomes their tool. Delete `AGENTS.md`
-   (it belongs to the starter kit, not to a tool) and continue with step 1.
-b. **Add this way of working to a project they already have** — do NOT initialize here,
-   and do not work on their project from this folder either. Ask for its path, copy
-   `.claude/skills/` and this repo's `.claude/settings.json` into it as described by
-   `adopting-a-project` (read that file directly — it is a skill of THIS folder and will
-   not be loadable once they move), then tell them to open THEIR project in VSCode and
-   continue there. Everything else in that skill happens in their folder, with their
-   git.
-c. **They are improving the starter kit itself** (maintainer) — do not initialize at
-   all; follow `AGENTS.md` and stop here.
+a. **A new project.** Ask where it should live — a folder OUTSIDE this repo, e.g.
+   `../spesenpruefer` next to it, or anywhere they like. Refuse a path inside this repo
+   and say why in one sentence; offer a sibling folder instead. Then create that folder
+   and copy the configuration into it: `.claude/` (settings and all skills), `CLAUDE.md`,
+   `CHANGELOG.md`, `.gitignore`, and `docs/` with its `INDEX.md`, `TAGS.md`, `TAGS`-tagged
+   conventions and `journal/INDEX.md` — the journal index keeps its
+   `<!-- UNINITIALIZED -->` marker, which is what continues setup over there. Do NOT copy
+   `AGENTS.md`, `LICENSE`, this `README.md`, or anything under `.git/`. Writing outside
+   this repo shows permission boxes; say in one sentence what you are copying and where.
+   Then stop and tell them: open THAT folder in VSCode and say hello — setup finishes
+   there, and this folder is never touched again.
+b. **A project they already have.** Same principle, different mechanics: read
+   `.claude/skills/adopting-a-project/SKILL.md` (it is a skill of this folder and will
+   not be loadable once they move) and follow it — copy the configuration into their
+   repo, then hand off to a session opened in THEIR project.
+c. **They are improving the kit itself** (maintainer) — do not set anything up; follow
+   `AGENTS.md`.
 
-If they later start doing work that clearly belongs to another project — editing code
-somewhere else, asking for features in a codebase they already have — offer (b) again
-rather than working at a distance: `adopting-a-project`.
+Everything below runs in the project's own folder, never here.
 
 ## Steps, in order
 
@@ -100,18 +105,13 @@ Done-checks in parentheses; skip satisfied steps:
 - The setup placeholder under `## [Unreleased]` in CHANGELOG.md is gone (and the header
   is in the user's language): rewrite the header paragraph if needed, and replace the
   placeholder line with a first entry saying the tool was set up today.
-- `README.md` describes THIS tool, not the starter kit: replace it with a short page in
-  the user's language — what the tool does, how to ask for things, where the manual and
-  the changelog are. The kit's own README is instructions for setting up, and they are
-  finished.
-- No `AGENTS.md` remains (it belongs to the template repo only, never to a tool): if
-  one is present, delete it.
-- Template build history pruned: delete exactly those `docs/journal/` entry files
-  (never `INDEX.md`) that are byte-identical to a file in this repo's FIRST commit —
-  those are the TEMPLATE's own memoirs, shipped with the copy; anything that differs is
-  this tool's real work and stays. Remove the deleted entries' index lines too. The
-  memoirs remain in the template repo and in the first commit. Deletion shows a
-  permission box; say in one sentence why.
+- `README.md` exists and describes THIS tool: a short page in the user's language —
+  what the tool does, how to ask for things, where the manual and the changelog are.
+- Neither `AGENTS.md` nor the kit's `LICENSE` is present (both belong to the kit alone):
+  if a copy slipped in, delete it. If the user wants a licence of their own later, that
+  is their name to put there, not the kit author's.
+- `docs/journal/` holds no entries from the kit (it ships empty; if a copy brought
+  some, delete them and their index lines).
 - Commit the personalization: `Personalize template for <tool name>` (skip if the tree
   is clean).
 
@@ -179,11 +179,11 @@ Two things to record so later sessions know what this repo is:
 - Write the first journal entry — file `docs/journal/YYYY-MM-DD-init.md` — per the
   `journaling` skill, documenting this init: answers given, versions installed, anything
   skipped. Skip if a `*-init.md` entry already exists.
-- Check every preceding step really happened before going further: `docs/user/about.md`
-  exists, no `<… set at init>` markers remain, the CHANGELOG placeholder is gone,
-  `README.md` describes THIS tool rather than the starter kit, `AGENTS.md` is gone,
-  template memoirs are pruned, `.developer-agent.json` exists, and no `origin` remote
-  points at the kit. If any of these is not true, STOP here: keep the marker, list the
+- Check every preceding step really happened before going further: you are NOT in the
+  kit folder, `docs/user/about.md` exists, no `<… set at init>` markers remain, the
+  CHANGELOG placeholder is gone, `README.md` describes THIS tool, no `AGENTS.md` or kit
+  `LICENSE` is present, `.developer-agent.json` exists, and no `origin` remote points at
+  the kit. If any of these is not true, STOP here: keep the marker, list the
   pending items for the user in plain language, and say init will resume next
   conversation.
 - Only if all of them hold: as a separate final edit (never combined with the index-line

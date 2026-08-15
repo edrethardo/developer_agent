@@ -74,8 +74,7 @@ Record the choice and its why in `docs/dev/stack.md` when `src/` gets its first 
 
 ## Where things live
 
-- `src/` — the tool's code
-- `tests/` — the automated checks, mirroring `src/`
+- the tool's own code and its tests, wherever this project keeps them
 - `docs/user/` — the user's manual (their language)
 - `docs/dev/` — technical docs and decision records (English)
 - `docs/journal/` — the work journal (English), indexed in `docs/journal/INDEX.md`

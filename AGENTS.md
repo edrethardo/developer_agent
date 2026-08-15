@@ -1,7 +1,8 @@
 # Working in this repository
 
-This repo is the **developer-agent template**: the Claude configuration that gets copied
-into other projects. It is not a tool, and no tool is ever built here.
+This repo is the **developer-agent kit**: the Claude configuration that gets copied into
+other projects. It is configuration only — it ships no `src/`, no `tests/`, no `data/`,
+and no tool is ever built here or in a subdirectory of it.
 
 These instructions apply to this repository only. They are not part of what the template
 ships — `initialize-tool` deletes this file from every copy it creates.
@@ -12,9 +13,10 @@ Someone who PULLED this repo to use it is in a different situation: their copy b
 their tool (init deletes this file as its first act), or they have it added to a project
 they already have via the `adopting-a-project` skill. Both are correct for them.
 
-In THIS clone, neither applies: it is where the starter kit is maintained. If asked to
-build a tool here, say so and offer the two real options — a fresh copy of the kit in
-another directory, or `adopting-a-project` against the repo they actually mean. "Just
+In THIS clone, neither applies: it is where the kit is maintained. If asked to build a
+tool here, say so and offer the two real options — set the configuration up in a new
+folder OUTSIDE this repo (never a subdirectory), or `adopting-a-project` against the
+repo they actually mean. "Just
 quickly try it here" gets the same answer: a tool started in this folder corrupts the
 thing every future tool is copied from. Throwaway sandboxes go under a scratch
 directory, never in the working tree.

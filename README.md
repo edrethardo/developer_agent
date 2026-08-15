@@ -20,20 +20,23 @@ needs your judgment.
    OneDrive or Dropbox: sync tools fight with the change-history system this kit relies
    on and can quietly corrupt it.
 2. Open the folder in VSCode (File → Open Folder…).
-3. Open Claude Code and say hello — in whatever language you prefer. The assistant asks
-   a few short questions and sets everything up. That's it.
+3. Open Claude Code and say hello — in whatever language you prefer.
+
+**This folder is the setup, not your workspace.** Your tool never lives in here. The
+assistant asks a few short questions and then puts everything your tool needs into a
+separate folder of your choosing — after that you work there, and this one can sit
+untouched or be deleted.
 
 The first question it asks is which of these you want:
 
-- **This folder becomes your tool.** Best if you are starting something new — the
-  assistant sets it up here and you work in this folder from now on. Want a second tool
-  later? Get a fresh copy of the kit for it.
-- **You already have a project, and you want to work this way in it.** The assistant
-  installs the setup into that project instead — carefully, on a separate branch,
-  keeping everything you already have. If anything of yours would be touched, it asks
-  first and tells you honestly what each choice costs. Nothing is overwritten behind
-  your back, and you can throw the whole thing away with one command until you are
-  happy with it.
+- **A new tool.** You say where it should live (a new folder — the assistant suggests
+  one next to this kit), it sets everything up there, and you open that folder and carry
+  on. Want a second tool later? Come back here and do it again.
+- **A project you already have.** The assistant installs this way of working into that
+  project instead — carefully, on a separate branch, keeping everything you already
+  have. If anything of yours would be touched, it asks first and tells you honestly what
+  each choice costs. Nothing is overwritten behind your back, and you can throw the
+  whole thing away with one command until you are happy with it.
 
 ## What to expect
 
