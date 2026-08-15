@@ -1,7 +1,7 @@
 ---
 name: adopting-a-project
 description: Use when the user wants this developer-agent setup added to a project they already have, or when they start working on code that lives in another folder — installs the configuration into their repo without breaking what is already there.
-version: 1
+version: 2
 ---
 
 # Adopting an Existing Project
@@ -72,3 +72,18 @@ it goes unnoticed.
 - Tell them the branch name and that merging it is their call.
 - Journal the adoption (`journaling` skill) — what was merged, what was skipped, what
   their project overrides — so a later session does not re-litigate it.
+- Then offer an adversarial review of their project — once, as an offer, never as a
+  condition of finishing. Put it plainly: you have just read your way into this
+  codebase, and you can spend a while attacking its structure on purpose — boundaries,
+  duplication, coupling, the places one change ripples through many files — and write
+  down what you find. Say what it costs (a chunk of time and tokens, no code changes
+  unless they ask) and what it is worth (the findings are ranked, and they decide what,
+  if anything, gets fixed).
+  Be honest about its limits when you make the offer: this is a first impression of a
+  codebase you have known for minutes, so findings are claims to verify, not verdicts,
+  and anything you flag may have a reason you have not seen yet. Ask the user what hurts
+  today — the answer usually beats anything you would have guessed.
+  If they accept: review, rank findings by likelihood times damage, journal them
+  (`journaling` skill), and change nothing until they choose. If they decline, say the
+  offer stands whenever they want it — and let the every-one-or-two-features cadence in
+  the hard rules take over from there.
