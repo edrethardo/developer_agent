@@ -11,7 +11,7 @@ The template assumes nothing about the target OS, but verification so far is:
 
 | OS | Status |
 |---|---|
-| Linux | Init rehearsed end-to-end mechanically (see journal 2026-08-14) |
+| Linux | Init rehearsed by hand, then run end-to-end by real sessions in an isolated sandbox |
 | Windows | Init path reviewed on paper only — VERIFY ON FIRST REAL DEPLOYMENT |
 | macOS | Init path reviewed on paper only — VERIFY ON FIRST REAL DEPLOYMENT |
 

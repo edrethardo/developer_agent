@@ -250,4 +250,5 @@ deliberate ways (see `docs/journal/2026-08-14-template-built.md` for the full st
   one-directional (improvements go template-first via the machine-wide block's
   "Template origin" line; `~/.claude/skills/` is a read-only deployment target and its
   writes now prompt), skill triggers were scoped to tool repos, and init prunes the
-  template's own journal entries from new tools. See journal 2026-08-15.
+  template's own journal entries from new tools. The build/review journal is not shipped in the template tree; it lives in the
+  template repository's git history.
