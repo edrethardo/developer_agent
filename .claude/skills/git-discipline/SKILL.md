@@ -1,13 +1,14 @@
 ---
 name: git-discipline
 description: Use before starting work, after reaching any working state, at session end, and when the user asks to undo or go back — keeps every change recoverable and the history readable.
-version: 3
+version: 4
 ---
 
 # Git Discipline
 
 The repo is local-only. Branches are an undo mechanism here, not a review mechanism.
-History is the backup — treat it that way.
+History is the undo — but it sits on the same disk as everything else, so it is NOT a
+backup (see below).
 
 ## Rules
 
@@ -28,6 +29,30 @@ History is the backup — treat it that way.
   exactly where it stands.
 - Never rewrite history: no `reset --hard`, no `--amend` (not even on the latest commit), no force anything.
   A wrong commit is fixed by a new commit.
+
+## Backups — git is not one
+
+Everything you protect with git lives on one computer. A dead disk, a stolen laptop or a
+wrong folder deletion takes the tool, its whole history and the user's data files at
+once. Their data is not even in git (see the data rule in CLAUDE.md), so for those files
+there is no undo at all.
+
+- **Ask once, early** — as soon as the tool does something worth keeping: is there a
+  copy of this folder anywhere else? Record the answer in `.developer-agent.json` as
+  `"backup"`: where it is, or `"none"`, or `"declined"`.
+- **If there is none, nag — but gently and rarely.** At most once per session, and only
+  after something worth losing was added, say plainly: THIS TOOL AND YOUR FILES EXIST
+  ONLY ON THIS COMPUTER. Then offer to do it rather than assigning homework: "tell me a
+  second location — a USB stick, a network drive — and I will copy the whole folder
+  there now." Copying outside the project shows a permission box; explain it in one
+  sentence.
+- **Do it properly when they accept**: copy the entire folder, data files included, and
+  say what was copied and where. Update `"backup"` and journal it.
+- **Respect a no.** After they decline twice, record `"declined"` and stop asking —
+  raise it again only before something genuinely risky, or if they ever say they lost
+  something.
+- A sync folder (OneDrive, Dropbox) is not a good home for the tool itself, but it is a
+  perfectly good place to keep a COPY. Say that if they have one.
 
 ## Explaining git to the user
 
