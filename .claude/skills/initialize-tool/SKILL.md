@@ -1,7 +1,7 @@
 ---
 name: initialize-tool
 description: Use when docs/journal/INDEX.md contains the UNINITIALIZED marker — first-run setup; interview the user, set up git, install shared skills, configure the machine.
-version: 2
+version: 3
 ---
 
 # Initialize Tool
@@ -11,7 +11,19 @@ language of the user's first message throughout.
 
 Every step is idempotent: each has a done-check and is skipped when already satisfied, so
 an interrupted init simply resumes next conversation. The `<!-- UNINITIALIZED -->` marker
-in `docs/journal/INDEX.md` is removed LAST — marker present means init is incomplete.
+in `docs/journal/INDEX.md` is removed LAST, and ONLY when every step below actually
+succeeded — marker present means init is incomplete. If ANY step is blocked (a denied
+permission, a missing tool, an unreachable path), you have not finished: leave the
+marker in place, tell the user plainly which parts are pending and what you need from
+them, and stop. Never announce that setup is complete while the marker's preconditions
+are unmet — the marker is the only thing that brings init back, so removing it early
+strands the tool half-configured forever.
+
+Never widen your own permissions to get unblocked: do not edit any `settings.json`
+(this project's or `~/.claude/`) to grant yourself a path or command. A permission box
+is the user's decision point — ask them to approve it in plain words, or stop and
+report. A session that grants itself rights has removed the user's only safeguard.
+
 (Edge case: init edits sitting uncommitted with NO marker means init crashed between its
 last two actions — just commit them as `Initialize <tool name>` and move on.)
 
@@ -142,9 +154,15 @@ Block template (indented here only to mark it as a template — write it UNINDEN
 - Write the first journal entry — file `docs/journal/YYYY-MM-DD-init.md` — per the
   `journaling` skill, documenting this init: answers given, versions installed, anything
   skipped. Skip if a `*-init.md` entry already exists.
-- Then, as a separate final edit (never combined with the index-line edit above), remove
-  the `<!-- UNINITIALIZED -->` line from `docs/journal/INDEX.md` — the LAST file edit of
-  init.
+- Check every preceding step really happened before going further: `docs/user/about.md`
+  exists, no `<… set at init>` markers remain, the CHANGELOG placeholder is gone,
+  template memoirs are pruned, all six skills exist in `~/.claude/skills/` at the
+  shipped version or newer, and the `~/.claude/CLAUDE.md` block lists this tool. If any
+  of these is not true, STOP here: keep the marker, list the pending items for the user
+  in plain language, and say init will resume next conversation.
+- Only if all of them hold: as a separate final edit (never combined with the index-line
+  edit above), remove the `<!-- UNINITIALIZED -->` line from `docs/journal/INDEX.md` —
+  the LAST file edit of init.
 - Commit: `Initialize <tool name>` (skip if the tree is clean).
 - Only now suggest renaming the folder to the tool's name: close VSCode, rename in the
   file manager, reopen. Skippable. If they rename, the path line in `~/.claude/CLAUDE.md`
