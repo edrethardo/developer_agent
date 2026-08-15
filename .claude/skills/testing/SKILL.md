@@ -1,7 +1,7 @@
 ---
 name: testing
 description: Use before writing any logic the user will trust — sums, filters, imports, anything money- or record-shaped — and before claiming that anything works.
-version: 3
+version: 4
 ---
 
 # Testing
@@ -30,8 +30,10 @@ For anything in the "gets a test" list:
 4. Run it again. Green.
 5. Tidy the code with the test still green, then commit test and code together.
 
-Use real examples from the user's own data as cases whenever they give you one — ask
-for a small sample file early; it is worth more than invented cases.
+Ask the user to DESCRIBE a real case early — the columns, a typical row, the awkward
+one that breaks things — and build the test data from that description. Never copy their
+real file into the tests: fixtures are committed forever. If you must see the format,
+read their file where it lives, take the shape, and invent rows that match it.
 
 ## Where tests live
 

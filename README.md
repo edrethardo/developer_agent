@@ -49,6 +49,13 @@ The first question it asks is which of these you want:
 - **Where this kit comes from.** The original starter kit, its full history and any
   newer version live at https://github.com/edrethardo/developer_agent — useful if you
   ever hand this tool to a professional developer.
+- **What leaves your computer.** The assistant runs on Anthropic's servers, so any
+  file it reads for you is sent there to be processed — the same as pasting it into a
+  chat. That is fine for most work files and not fine for some: if something is too
+  sensitive to leave the building, don't hand it over. Say what it looks like instead
+  ("a spreadsheet with date, amount, cost centre") and the assistant will work from the
+  description. Your real files also stay out of the tool's saved history on purpose, so
+  they are not carried along when the tool is copied or shared.
 - **You never need the terminal.** If anything ever seems to require it, say so — that's
   a bug in this starter kit, not something you're supposed to do. One honest exception:
   if your computer doesn't yet have "git" (the change-history program this kit depends

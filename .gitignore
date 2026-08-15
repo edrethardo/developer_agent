@@ -1,3 +1,21 @@
+# The user's real files — exports, spreadsheets, lists. Never in git: a history is
+# forever, and their data is not ours to keep. Keep them in data/ (or wherever this
+# project puts them) and add that path here.
+data/
+*.csv
+*.xlsx
+*.xls
+*.ods
+*.eml
+*.msg
+
+# Credentials
+.env
+*.key
+*.pem
+credentials*
+secrets*
+
 # OS droppings that folder copies and file managers leave behind
 .DS_Store
 Thumbs.db

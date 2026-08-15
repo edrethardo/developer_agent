@@ -1,7 +1,7 @@
 ---
 name: adopting-a-project
 description: Use when the user wants this developer-agent setup added to a project they already have, or when they start working on code that lives in another folder — installs the configuration into their repo without breaking what is already there.
-version: 3
+version: 4
 ---
 
 # Adopting an Existing Project
@@ -53,7 +53,9 @@ Additive only:
   are missing, and never carry the kit's `<!-- UNINITIALIZED -->` marker into them: this
   project is not a fresh tool and must not trigger first-run setup. If they already keep docs somewhere else, adapt the paths to their layout
   instead of imposing this one, and say so.
-- `.gitignore` — append only the lines they lack.
+- `.gitignore` — append only the lines they lack, and ask before adding the data
+  patterns (`*.csv`, `data/`, …): a project that deliberately versions such files must
+  keep doing so, and silently ignoring them would hide their own data from them.
 
 Never added to someone else's project: `README.md`, `LICENSE`, `AGENTS.md`, `src/`,
 `tests/`, or anything from the starter kit's own history. `CHANGELOG.md` only if they
