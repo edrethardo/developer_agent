@@ -1,7 +1,7 @@
 ---
 name: initialize-tool
 description: Use when docs/journal/INDEX.md contains the UNINITIALIZED marker — first-run setup; interview the user, set up git, install shared skills, configure the machine.
-version: 5
+version: 6
 ---
 
 # Initialize Tool
@@ -27,17 +27,22 @@ report. A session that grants itself rights has removed the user's only safeguar
 (Edge case: init edits sitting uncommitted with NO marker means init crashed between its
 last two actions — just commit them as `Initialize <tool name>` and move on.)
 
-## Step 0 — never initialize the template itself
+## Step 0 — which of the three situations is this?
 
-If this folder is the developer-agent template — an `AGENTS.md` at the root says so, or
-the git remote points at the template project — STOP: this repo is the configuration
-source, not a tool, and a tool started here corrupts what every future copy is made
-from. Instead ask the user which directory their new tool should live in, create it,
-copy everything except `.git/` and `AGENTS.md` into it (writing outside this repo shows
-a permission box — say in one sentence what you are copying and where), and tell them to
-open THAT folder in VSCode and say hello; init runs there. If the directory they name
-already holds a project, say plainly that adding this configuration to an existing
-project is not supported yet, and stop.
+An `AGENTS.md` at the root means this folder is a fresh copy of the starter kit and
+nothing has been decided yet. Ask the user once, in plain language, which they want:
+
+a. **Build a new tool right here** — this folder becomes their tool. Delete `AGENTS.md`
+   (it belongs to the starter kit, not to a tool) and continue with step 1.
+b. **Add this way of working to a project they already have** — do NOT initialize here.
+   Switch to the `adopting-a-project` skill, which installs the configuration into their
+   repo additively, on a branch, asking before touching anything of theirs.
+c. **They are improving the starter kit itself** (maintainer) — do not initialize at
+   all; follow `AGENTS.md` and stop here.
+
+If they later start doing work that clearly belongs to another project — editing code
+somewhere else, asking for features in a codebase they already have — offer (b) again
+rather than working at a distance: `adopting-a-project`.
 
 ## Steps, in order
 
@@ -145,12 +150,12 @@ delimiters. Rules:
 
 Block template (indented here only to mark it as a template — write it UNINDENTED):
 
-    <!-- developer-agent:start v3 -->
+    <!-- developer-agent:start v4 -->
     ## Developer-agent tool repos
 
     Shared skills for these repos live in ~/.claude/skills/ (journaling,
     finding-knowledge, git-discipline, explaining-complexity, documenting,
-    creating-skills, testing) — use them. They are a read-only deployment target: only a
+    creating-skills, testing, adopting-a-project) — use them. They are a read-only deployment target: only a
     template's init/upgrade step writes there; tools improve skills via their
     creating-skills flow, never by editing ~/.claude/skills/ directly. Before
     investigating anything in one of these repos, read its docs/journal/INDEX.md and

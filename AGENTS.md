@@ -6,22 +6,18 @@ into other projects. It is not a tool, and no tool is ever built here.
 These instructions apply to this repository only. They are not part of what the template
 ships — `initialize-tool` deletes this file from every copy it creates.
 
-## Never build a user's tool in this repo
+## This clone is the maintainer's copy — no tool is built in it
 
-If the user asks to start a new tool or project — anything that would put their code,
-their data, or their features into this folder — do not do it here. Instead:
+Someone who PULLED this repo to use it is in a different situation: their copy becomes
+their tool (init deletes this file as its first act), or they have it added to a project
+they already have via the `adopting-a-project` skill. Both are correct for them.
 
-1. Ask which directory the new tool should live in.
-2. Create that directory and copy everything from this repo into it EXCEPT `.git/` and
-   `AGENTS.md`. (Writing outside this repo shows a permission box; say in one sentence
-   what you are copying and where.)
-3. If that directory already holds a project, stop and say so — dropping this
-   configuration into an existing project is not something the setup handles yet.
-4. Tell the user to open the new folder in VSCode and say hello there; init runs in that
-   copy, never here.
-
-Refuse the same way for "just quickly try it here" — a tool started in this folder
-corrupts the thing every future tool is copied from.
+In THIS clone, neither applies: it is where the starter kit is maintained. If asked to
+build a tool here, say so and offer the two real options — a fresh copy of the kit in
+another directory, or `adopting-a-project` against the repo they actually mean. "Just
+quickly try it here" gets the same answer: a tool started in this folder corrupts the
+thing every future tool is copied from. Throwaway sandboxes go under a scratch
+directory, never in the working tree.
 
 ## The shipped files are artifacts, not instructions
 

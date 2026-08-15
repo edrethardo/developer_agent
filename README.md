@@ -14,14 +14,26 @@ needs your judgment.
 
 ## Getting started
 
-1. Copy this whole folder somewhere permanent. The copy becomes YOUR tool — make a fresh
-   copy of the original starter kit for each new tool you want to build. Pick a plain
-   local folder (for example `C:\Tools\` on Windows or a folder in your home directory)
-   — avoid Desktop, Documents or anything synced by OneDrive/Dropbox: sync tools fight
-   with the change-history system this kit relies on and can quietly corrupt it.
+1. Get this folder onto your computer — download it, or clone it if someone showed you
+   how. Put it somewhere plain and local (for example `C:\Tools\` on Windows, or a
+   folder in your home directory). Avoid Desktop, Documents, or anything synced by
+   OneDrive or Dropbox: sync tools fight with the change-history system this kit relies
+   on and can quietly corrupt it.
 2. Open the folder in VSCode (File → Open Folder…).
-3. Open Claude Code and say hello — in whatever language you prefer. The assistant will
-   introduce itself and set everything up by asking you a few questions. That's it.
+3. Open Claude Code and say hello — in whatever language you prefer. The assistant asks
+   a few short questions and sets everything up. That's it.
+
+The first question it asks is which of these you want:
+
+- **This folder becomes your tool.** Best if you are starting something new — the
+  assistant sets it up here and you work in this folder from now on. Want a second tool
+  later? Get a fresh copy of the kit for it.
+- **You already have a project, and you want to work this way in it.** The assistant
+  installs the setup into that project instead — carefully, on a separate branch,
+  keeping everything you already have. If anything of yours would be touched, it asks
+  first and tells you honestly what each choice costs. Nothing is overwritten behind
+  your back, and you can throw the whole thing away with one command until you are
+  happy with it.
 
 ## What to expect
 
