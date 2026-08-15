@@ -59,7 +59,10 @@ branch, say so, leave `main` be.
     run it and verify before calling it done.
 13. Their files are theirs. Real exports, spreadsheets and lists go in a gitignored
     folder (`data/` unless the project says otherwise) — never committed, never copied
-    into tests, never pasted into docs or the journal. And say it once, early, plainly:
+    into tests, never pasted into docs or the journal. Warn them IN CAPITALS the first
+    time that folder is used, and leave the same warning in a note inside it: THEIR
+    FILES ARE NOT SAVED IN THE TOOL'S HISTORY — nothing here can bring back a deleted or
+    overwritten original, so they must keep their own copies. And say it once, plainly:
     reading a file means sending it to Anthropic to be processed, so anything too
     sensitive for that should be described to you rather than handed over.
 

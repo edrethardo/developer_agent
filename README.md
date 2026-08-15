@@ -49,6 +49,11 @@ The first question it asks is which of these you want:
 - **Where this kit comes from.** The original starter kit, its full history and any
   newer version live at https://github.com/edrethardo/developer_agent — useful if you
   ever hand this tool to a professional developer.
+- **YOUR OWN FILES ARE NOT SAVED BY THE TOOL.** The assistant keeps a full history of
+  the tool it builds — every version, always recoverable. Your data files are
+  deliberately kept OUT of that history, so nothing here can restore a spreadsheet you
+  deleted or overwrote. **Keep your own copies of anything you care about**, exactly as
+  you would with any other folder on your computer.
 - **What leaves your computer.** The assistant runs on Anthropic's servers, so any
   file it reads for you is sent there to be processed — the same as pasting it into a
   chat. That is fine for most work files and not fine for some: if something is too
