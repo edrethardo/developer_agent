@@ -1,7 +1,7 @@
 ---
 name: initialize-tool
 description: Use when docs/journal/INDEX.md contains the UNINITIALIZED marker — first-run setup; interview the user, set up git, install shared skills, configure the machine.
-version: 7
+version: 8
 ---
 
 # Initialize Tool
@@ -131,6 +131,33 @@ Nothing is installed outside this folder — no machine-wide files, no shared sk
 directory. The skills in `.claude/skills/` came with the copy and are already this
 tool's own; they load only here, so nothing this tool does can change how Claude behaves
 in the user's other projects.
+
+The one exception, and it is a single question rather than any behaviour: with the
+user's agreement, this setup may leave a short block in `~/.claude/CLAUDE.md` so that in
+their OTHER projects Claude offers — once, per project — to set this way of working up
+there too. Ask before writing it, in one sentence: "shall I let Claude offer this setup
+once in your other projects, or keep it strictly to this folder?" If they decline, write
+nothing; the tool works exactly the same. If they agree and no
+`<!-- developer-agent:start` block exists, append this, with `<kit path>` replaced by
+this folder's absolute path (indented here only to mark it as a template — write it
+UNINDENTED):
+
+    <!-- developer-agent:start v5 -->
+    ## Developer agent — ask once per project
+
+    In a project that has no `.developer-agent.json`, no
+    `.claude/skills/adopting-a-project/`, and is not the developer-agent kit itself:
+    you may offer ONCE, in one sentence, to set up this way of working (work journal,
+    git discipline, tests for anything the user trusts, honest cost estimates) for this
+    project. If they accept, follow
+    `<kit path>/.claude/skills/adopting-a-project/SKILL.md`.
+    Record the answer as one line `<project path> — accepted|declined` in
+    `~/.claude/developer-agent-asked.txt` and never raise it in that project again.
+    Never interrupt a task to ask, and never install skills into `~/.claude/skills/`.
+    <!-- developer-agent:end -->
+
+Nothing else of this setup is ever installed outside a project — no shared skills, no
+rules that follow the user into unrelated repositories.
 
 Two things to record so later sessions know what this repo is:
 

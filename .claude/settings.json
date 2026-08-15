@@ -39,11 +39,13 @@
       "Edit(.claude/settings*.json)",
       "Write(.claude/settings*.json)",
       "Edit(.git/**)",
-      "Write(.git/**)"
+      "Write(.git/**)",
+      "Edit(~/.claude/CLAUDE.md)",
+      "Write(~/.claude/CLAUDE.md)"
     ],
     "deny": [
-      "Edit(~/.claude/**)",
-      "Write(~/.claude/**)"
+      "Edit(~/.claude/skills/**)",
+      "Write(~/.claude/skills/**)"
     ]
   }
 }
