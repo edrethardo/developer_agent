@@ -58,6 +58,12 @@ failed.
 
 ## Follow-ups
 
-- Await Werkbank session's confirmation that its settings.json ask-guards and CLAUDE.md
-  flywheel text are patched (its user must approve).
+- N1 CLOSED same day: the Werkbank session verified the claims independently (grep of
+  its settings.json, version compare, v1→v2 diff), asked its user, and applied all of
+  it — `~/.claude` writes moved allow→ask, CLAUDE.md flywheel wording replaced, the six
+  shared skills upgraded to v2, and later `initialize-tool` v3 pulled as well. Its
+  install run is also this project's only interactive evidence that the ask-guards fire
+  and the install completes after approval (see 2026-08-15-sandbox-init-test.md, where
+  headless testing could not reach those steps). Its own `_user-level/` staging stays at
+  v1 deliberately — Werkbank is a tool, not a template, and delivers to nobody.
 - First real Windows deployment still owes the os-coverage verification.
