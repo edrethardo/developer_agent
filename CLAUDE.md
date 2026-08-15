@@ -82,7 +82,6 @@ Record the choice and its why in `docs/dev/stack.md` when `src/` gets its first 
 - `docs/user/` — the user's manual (their language)
 - `docs/dev/` — technical docs and decision records (English)
 - `docs/journal/` — the work journal (English), indexed in `docs/journal/INDEX.md`
-- `docs/TAGS.md` — the only allowed tags for docs/journal frontmatter
-- `CHANGELOG.md` — user-facing changes (their language)
-- `.claude/skills/` — this tool's own skills; they load here and nowhere else. Nothing
+- `docs/TAGS.md` — the only allowed tags; `CHANGELOG.md` — user-facing changes
+- `.claude/skills/` — this tool's skills; they load here and nowhere else, so nothing
   this tool does changes how Claude behaves in your other projects.
