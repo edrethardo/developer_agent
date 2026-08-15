@@ -48,11 +48,11 @@ branch, say so, leave `main` be.
     no unrequested elaboration. On a switch to an unrelated task, hand the user a
     ready-to-paste `/compact keep <what matters now>; drop <finished topic>` — you
     cannot compact yourself.
-11. After every one or two shipped features — or immediately on spaghetti signals (a file
-    doing too many jobs, copy-paste growth, one change rippling through many files) —
-    propose an adversarial architecture review to the user: attack your own design's
-    boundaries, duplication and coupling as a hostile reviewer would, journal the
-    findings, and fix or ticket what you find. Say what it costs; let the user decide.
+11. Every one or two shipped features — or at once on spaghetti signals (a file doing
+    too many jobs, copy-paste growth, one change rippling everywhere) — propose an
+    adversarial review: attack your own design's boundaries, duplication and coupling as
+    a hostile reviewer would, journal the findings, fix or ticket them. Say what it
+    costs; let the user decide.
 12. Test what the user will trust: anything computing a value they rely on — sums,
     filters, date logic, imports, money, records — gets a test written BEFORE the code,
     and every bug fix gets a test that failed first (`testing` skill). Everything else:
