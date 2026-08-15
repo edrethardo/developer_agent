@@ -1,13 +1,22 @@
 ---
 name: adopting-a-project
 description: Use when the user wants this developer-agent setup added to a project they already have, or when they start working on code that lives in another folder — installs the configuration into their repo without breaking what is already there.
-version: 2
+version: 3
 ---
 
 # Adopting an Existing Project
 
 Their project comes first. You are adding a way of working to a codebase that already
 works; nothing of theirs may be lost, overwritten, or silently changed.
+
+## Work in THEIR folder, not from the kit
+
+Everything below happens in the user's project, with their git. If this session is
+still sitting in the starter-kit folder, copy `.claude/skills/` and
+`.claude/settings.json` across as the first act, then ask the user to open THEIR project
+in VSCode and say hello — the rest of this skill runs there, where it can see their
+files and their history. Running it at a distance from the kit folder branches the wrong
+repo and leaves their work with no undo.
 
 ## Before touching anything
 
@@ -26,25 +35,35 @@ works; nothing of theirs may be lost, overwritten, or silently changed.
 
 Additive only:
 
-- `.claude/settings.json` — the permission rules. If they already have one, MERGE:
-  keep every entry of theirs, add only what is missing, never remove or reorder theirs.
+- `.claude/skills/` — the skills themselves, copied into their project so this way of
+  working exists only where they asked for it. Never installed machine-wide.
+- `.claude/settings.json` — the permission rules. If they already have one, MERGE: keep
+  every entry of theirs, add only what is missing, never remove or reorder theirs. One
+  trap to check explicitly: an entry added to `ask` OUTRANKS an existing `allow`, so
+  adding this setup's `ask` list can turn commands they run freely today (`git push`,
+  `curl`, `rm`) into a prompt every time. List those before merging and let them choose
+  per entry — silently making a developer's daily commands prompt is a downgrade, not a
+  safeguard.
 - `CLAUDE.md` — the hard rules and conventions. If they already have one, do NOT
   replace it: append the rules inside a clearly delimited block
   (`<!-- developer-agent:start vN -->` … `<!-- developer-agent:end -->`), leaving their
   content untouched. Drop the parts that do not apply to their project (the stack
   policy, if they already have a stack).
 - `docs/INDEX.md`, `docs/TAGS.md`, `docs/journal/INDEX.md` — create only the ones that
-  are missing. If they already keep docs somewhere else, adapt the paths to their layout
+  are missing, and never carry the kit's `<!-- UNINITIALIZED -->` marker into them: this
+  project is not a fresh tool and must not trigger first-run setup. If they already keep docs somewhere else, adapt the paths to their layout
   instead of imposing this one, and say so.
 - `.gitignore` — append only the lines they lack.
 
-Never added to someone else's project: `README.md`, `CHANGELOG.md`, `LICENSE`,
-`AGENTS.md`, `src/`, `tests/`, or anything from the starter kit's own history.
+Never added to someone else's project: `README.md`, `LICENSE`, `AGENTS.md`, `src/`,
+`tests/`, or anything from the starter kit's own history. `CHANGELOG.md` only if they
+want one — if they decline, say so in the delimited block you add to their `CLAUDE.md`
+("this project keeps no changelog"), so the documenting rule does not later demand a
+file that was deliberately refused.
 
-The shared skills live in `~/.claude/skills/` and are installed once per machine, not
-per project — install any that are missing, using the same version rule as first-time
-setup (copy only when the shipped `version:` is greater; never downgrade; never touch
-skills this setup did not ship). Then add the project to the machine-wide block's list.
+Also drop a `.developer-agent.json` at their root recording `role: "adopted"`,
+`kit_origin` and `kit_version`, so a later session knows what was added and
+`syncing-the-kit` can offer updates.
 
 ## Collisions — ask, with an honest recommendation
 

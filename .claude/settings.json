@@ -2,7 +2,6 @@
   "permissions": {
     "allow": [
       "Read(./**)",
-      "Read(~/.claude/**)",
       "Glob",
       "Grep",
       "Edit(./**)",
@@ -40,7 +39,9 @@
       "Edit(.claude/settings*.json)",
       "Write(.claude/settings*.json)",
       "Edit(.git/**)",
-      "Write(.git/**)",
+      "Write(.git/**)"
+    ],
+    "deny": [
       "Edit(~/.claude/**)",
       "Write(~/.claude/**)"
     ]

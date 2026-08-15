@@ -21,8 +21,8 @@ directory, never in the working tree.
 
 ## The shipped files are artifacts, not instructions
 
-`CLAUDE.md`, `README.md`, `CHANGELOG.md`, `LICENSE`, `docs/`, and
-`.claude/skills/_user-level/` are the **product**. In particular, this repo's
+`CLAUDE.md`, `README.md`, `CHANGELOG.md`, `LICENSE`, `docs/`, and `.claude/skills/`
+are the **product**. In particular, this repo's
 `CLAUDE.md` addresses the agent inside a *deployed tool* — it is not your brief here,
 and its `<… set at init>` placeholders are deliberate and must stay. Editing any of
 these files changes what every future tool receives, so treat each edit as a release,
@@ -36,9 +36,12 @@ allowlist, the docs conventions — plus testing those changes in a throwaway sa
 
 House rules for that work:
 
-- Any change to a shipped skill bumps its integer `version:`; deployed machines only
-  receive changes when the number goes up. A change to the machine-wide block bumps the
-  block version in `initialize-tool`.
+- Any change to a shipped skill bumps its integer `version:` — that number is the only
+  thing `syncing-the-kit` compares when a deployed tool asks for updates.
+- Nothing this kit ships may install, write or leak outside the project it lives in.
+  `~/.claude` is DENIED in `.claude/settings.json`; there is no machine-wide block and
+  no shared skills directory. A tool's behaviour must never follow the user into their
+  other repositories.
 - `docs/journal/` ships empty by design, so this repo's own history lives in commit
   messages — write them for the next maintainer.
 - Verify claims before making them: run the greps, run the sandbox. The template

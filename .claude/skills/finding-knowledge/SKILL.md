@@ -1,7 +1,7 @@
 ---
 name: finding-knowledge
-description: In developer-agent tool repos (the repo carries docs/journal/INDEX.md): use before starting any task, investigation, or debugging session, and before answering "how does X work?" — search the project's journal and docs before re-deriving anything.
-version: 2
+description: Use before starting any task, investigation, or debugging session, and before answering "how does X work?" — search the project's journal and docs before re-deriving anything.
+version: 3
 ---
 
 # Finding Knowledge

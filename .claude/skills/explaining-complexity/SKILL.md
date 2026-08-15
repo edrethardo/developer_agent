@@ -1,7 +1,7 @@
 ---
 name: explaining-complexity
-description: In developer-agent tool repos (the repo carries docs/journal/INDEX.md): use when the user requests a new feature or change, before building anything — give an honest, plain-language cost assessment first.
-version: 2
+description: Use when the user requests a new feature or change, before building anything — give an honest, plain-language cost assessment first.
+version: 3
 ---
 
 # Explaining Complexity

@@ -1,7 +1,7 @@
 ---
 name: documenting
-description: In developer-agent tool repos (the repo carries docs/journal/INDEX.md): use after any user-visible change or architectural decision — update user docs, dev docs, CHANGELOG and the indexes in the same session as the change.
-version: 2
+description: Use after any user-visible change or architectural decision — update user docs, dev docs, CHANGELOG and the indexes in the same session as the change.
+version: 3
 ---
 
 # Documenting
@@ -15,7 +15,8 @@ Docs updated "later" are docs never updated. Same session, same commit as the ch
 - `docs/dev/` — English. Architecture, setup, decision records. A decision record states
   what was decided, why, what was rejected, and links the journal entry of the session
   that decided it (relative markdown link).
-- `CHANGELOG.md` — the user's language, https://keepachangelog.com style, newest first.
+- `CHANGELOG.md` — only if this project keeps one (an adopted project may deliberately
+  not; its CLAUDE.md says so). The user's language, https://keepachangelog.com style, newest first.
   What changed FOR THE USER. Internal refactors, test-only and doc-only changes are
   omitted.
 

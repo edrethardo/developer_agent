@@ -1,7 +1,7 @@
 ---
 name: journaling
-description: In developer-agent tool repos (the repo carries docs/journal/INDEX.md): use at session end, after completing or abandoning any task, or when an approach fails — record what happened in docs/journal/ so no future session re-investigates it.
-version: 2
+description: Use at session end, after completing or abandoning any task, or when an approach fails — record what happened in docs/journal/ so no future session re-investigates it.
+version: 3
 ---
 
 # Journaling

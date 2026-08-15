@@ -1,6 +1,6 @@
 ---
 name: git-discipline
-description: In developer-agent tool repos (the repo carries docs/journal/INDEX.md): use before starting work, after reaching any working state, at session end, and when the user asks to undo or go back — keeps every change recoverable and the history readable.
+description: Use before starting work, after reaching any working state, at session end, and when the user asks to undo or go back — keeps every change recoverable and the history readable.
 version: 3
 ---
 

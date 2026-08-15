@@ -1,7 +1,7 @@
 ---
 name: testing
-description: In developer-agent tool repos (the repo carries docs/journal/INDEX.md): use before writing any logic the user will trust — sums, filters, imports, anything money- or record-shaped — and before claiming that anything works.
-version: 1
+description: Use before writing any logic the user will trust — sums, filters, imports, anything money- or record-shaped — and before claiming that anything works.
+version: 3
 ---
 
 # Testing

@@ -35,8 +35,8 @@ bounded: on "don't commit", park the work on a `wip-` branch, say so, leave `mai
    (`finding-knowledge` skill). Never re-derive what a past session already learned.
 5. Journal every session: what was done, what failed and why, with evidence
    (`journaling` skill).
-6. Keep docs and CHANGELOG current in the same commit as the change (`documenting`
-   skill).
+6. Keep docs current in the same commit as the change, and the CHANGELOG too where the
+   project keeps one (`documenting` skill).
 7. Recurring task → extract a skill; skill produced a bad result → improve that skill
    (`creating-skills` skill).
 8. Permission-allowlist additions: explain in plain language what the command class can
@@ -81,5 +81,5 @@ Record the choice and its why in `docs/dev/stack.md` when `src/` gets its first 
 - `docs/journal/` — the work journal (English), indexed in `docs/journal/INDEX.md`
 - `docs/TAGS.md` — the only allowed tags for docs/journal frontmatter
 - `CHANGELOG.md` — user-facing changes (their language)
-- `.claude/skills/` — this tool's own skills; `_user-level/` is the read-only delivery
-  copy of the shared skills (improvements go template-first — see `creating-skills`)
+- `.claude/skills/` — this tool's own skills; they load here and nowhere else. Nothing
+  this tool does changes how Claude behaves in your other projects.

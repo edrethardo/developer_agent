@@ -1,7 +1,7 @@
 ---
 name: initialize-tool
 description: Use when docs/journal/INDEX.md contains the UNINITIALIZED marker — first-run setup; interview the user, set up git, install shared skills, configure the machine.
-version: 6
+version: 7
 ---
 
 # Initialize Tool
@@ -34,9 +34,13 @@ nothing has been decided yet. Ask the user once, in plain language, which they w
 
 a. **Build a new tool right here** — this folder becomes their tool. Delete `AGENTS.md`
    (it belongs to the starter kit, not to a tool) and continue with step 1.
-b. **Add this way of working to a project they already have** — do NOT initialize here.
-   Switch to the `adopting-a-project` skill, which installs the configuration into their
-   repo additively, on a branch, asking before touching anything of theirs.
+b. **Add this way of working to a project they already have** — do NOT initialize here,
+   and do not work on their project from this folder either. Ask for its path, copy
+   `.claude/skills/` and this repo's `.claude/settings.json` into it as described by
+   `adopting-a-project` (read that file directly — it is a skill of THIS folder and will
+   not be loadable once they move), then tell them to open THEIR project in VSCode and
+   continue there. Everything else in that skill happens in their folder, with their
+   git.
 c. **They are improving the starter kit itself** (maintainer) — do not initialize at
    all; follow `AGENTS.md` and stop here.
 
@@ -96,6 +100,10 @@ Done-checks in parentheses; skip satisfied steps:
 - The setup placeholder under `## [Unreleased]` in CHANGELOG.md is gone (and the header
   is in the user's language): rewrite the header paragraph if needed, and replace the
   placeholder line with a first entry saying the tool was set up today.
+- `README.md` describes THIS tool, not the starter kit: replace it with a short page in
+  the user's language — what the tool does, how to ask for things, where the manual and
+  the changelog are. The kit's own README is instructions for setting up, and they are
+  finished.
 - No `AGENTS.md` remains (it belongs to the template repo only, never to a tool): if
   one is present, delete it.
 - Template build history pruned: delete exactly those `docs/journal/` entry files
@@ -117,74 +125,45 @@ plain answer first. Adding something to the always-allowed list is possible, and
 worst case gets explained before it happens (the allowlist rule in CLAUDE.md's hard
 rules).
 
-### 5. Install shared skills
+### 5. Make this repo self-contained
 
-First tell the user in one sentence: several permission boxes will now appear — each is
-this setup copying one skill file into `~/.claude/skills/`, the shared folder every tool
-on this machine reads (writes there are deliberately NOT pre-approved). Then, for each
-folder in `.claude/skills/_user-level/`, target `~/.claude/skills/<name>/`:
+Nothing is installed outside this folder — no machine-wide files, no shared skills
+directory. The skills in `.claude/skills/` came with the copy and are already this
+tool's own; they load only here, so nothing this tool does can change how Claude behaves
+in the user's other projects.
 
-- Not present there → copy it by READING each file and WRITING it to the target with the
-  file tools; never shell out to `cp`.
-- Present → compare the integer `version:` in both SKILL.md frontmatters; copy (the same
-  way) only if the shipped version is GREATER. Never downgrade. Never touch skills this
-  template didn't ship. When upgrading, also delete files in the target folder that the
-  shipped folder no longer contains — again a permission box; tell the user in one
-  plain sentence what is being removed and why before confirming.
+Two things to record so later sessions know what this repo is:
 
-### 6. Machine-wide CLAUDE.md block
+- Sever the tie to the kit if it is still there: if `git remote` shows an `origin`
+  pointing at the developer-agent kit, remove it (`git remote remove origin`). This repo
+  is the user's tool now, not a fork of the kit — and pulling the kit's history over
+  their work would overwrite it. Say in one sentence that you did this and that updates
+  come via the `syncing-the-kit` skill instead.
+- Write `.developer-agent.json` at the root, committed with the personalization:
 
-File: `~/.claude/CLAUDE.md` — create it if missing. NEVER modify anything outside the
-delimiters. Rules:
+      {"role": "tool", "kit_origin": "https://github.com/edrethardo/developer_agent",
+       "kit_version": "<the version: of initialize-tool>", "initialized": "YYYY-MM-DD"}
 
-- No `<!-- developer-agent:start` block → append the block below to the end of the file,
-  with the `- <tool name> — <absolute path>` placeholder line REPLACED by this tool's
-  real entry.
-- Block exists with a LOWER version in the start delimiter → replace the block's content
-  (delimiter to delimiter) with the current template, preserving the existing tool list
-  and any already-customized Template line. Concretely: write the new template, then
-  replace its placeholder lines with the old block's values.
-- Block exists with an EQUAL or HIGHER version → leave its content alone.
-- Then ensure THIS tool is listed exactly once, keyed by absolute path: path already
-  listed → leave it; otherwise append one line `- <tool name> — <absolute path>`.
+  `syncing-the-kit` reads this later; `kit_origin` becomes a local path instead if the
+  user keeps a copy of the kit on disk.
 
-Block template (indented here only to mark it as a template — write it UNINDENTED):
-
-    <!-- developer-agent:start v4 -->
-    ## Developer-agent tool repos
-
-    Shared skills for these repos live in ~/.claude/skills/ (journaling,
-    finding-knowledge, git-discipline, explaining-complexity, documenting,
-    creating-skills, testing, adopting-a-project) — use them. They are a read-only deployment target: only a
-    template's init/upgrade step writes there; tools improve skills via their
-    creating-skills flow, never by editing ~/.claude/skills/ directly. Before
-    investigating anything in one of these repos, read its docs/journal/INDEX.md and
-    docs/INDEX.md first.
-
-    Template origin: https://github.com/edrethardo/developer_agent — replace with the
-    local template folder's absolute path if one is kept on this machine.
-
-    Tool repos on this machine (list may be stale — verify a path exists before use):
-    - <tool name> — <absolute path>
-    <!-- developer-agent:end -->
-
-### 7. Close out
+### 6. Close out
 
 - Write the first journal entry — file `docs/journal/YYYY-MM-DD-init.md` — per the
   `journaling` skill, documenting this init: answers given, versions installed, anything
   skipped. Skip if a `*-init.md` entry already exists.
 - Check every preceding step really happened before going further: `docs/user/about.md`
   exists, no `<… set at init>` markers remain, the CHANGELOG placeholder is gone,
-  template memoirs are pruned, all six skills exist in `~/.claude/skills/` at the
-  shipped version or newer, and the `~/.claude/CLAUDE.md` block lists this tool. If any
-  of these is not true, STOP here: keep the marker, list the pending items for the user
-  in plain language, and say init will resume next conversation.
+  `README.md` describes THIS tool rather than the starter kit, `AGENTS.md` is gone,
+  template memoirs are pruned, `.developer-agent.json` exists, and no `origin` remote
+  points at the kit. If any of these is not true, STOP here: keep the marker, list the
+  pending items for the user in plain language, and say init will resume next
+  conversation.
 - Only if all of them hold: as a separate final edit (never combined with the index-line
   edit above), remove the `<!-- UNINITIALIZED -->` line from `docs/journal/INDEX.md` —
   the LAST file edit of init.
 - Commit: `Initialize <tool name>` (skip if the tree is clean).
 - Only now suggest renaming the folder to the tool's name: close VSCode, rename in the
-  file manager, reopen. Skippable. If they rename, the path line in `~/.claude/CLAUDE.md`
-  goes stale — acceptable by design: the block itself warns that paths may be stale and
-  must be verified before use. An agent must not rename its own working directory.
+  file manager, reopen. Skippable, and nothing breaks either way — nothing outside this
+  folder records its path. An agent must not rename its own working directory.
 - Hand over: "Setup's done. Tell me what you'd like the tool to do first."
