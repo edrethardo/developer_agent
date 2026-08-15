@@ -1,7 +1,7 @@
 ---
 name: initialize-tool
 description: Use when docs/journal/INDEX.md contains the UNINITIALIZED marker — first-run setup; interview the user, set up git, install shared skills, configure the machine.
-version: 4
+version: 5
 ---
 
 # Initialize Tool
@@ -26,6 +26,18 @@ report. A session that grants itself rights has removed the user's only safeguar
 
 (Edge case: init edits sitting uncommitted with NO marker means init crashed between its
 last two actions — just commit them as `Initialize <tool name>` and move on.)
+
+## Step 0 — never initialize the template itself
+
+If this folder is the developer-agent template — an `AGENTS.md` at the root says so, or
+the git remote points at the template project — STOP: this repo is the configuration
+source, not a tool, and a tool started here corrupts what every future copy is made
+from. Instead ask the user which directory their new tool should live in, create it,
+copy everything except `.git/` and `AGENTS.md` into it (writing outside this repo shows
+a permission box — say in one sentence what you are copying and where), and tell them to
+open THAT folder in VSCode and say hello; init runs there. If the directory they name
+already holds a project, say plainly that adding this configuration to an existing
+project is not supported yet, and stop.
 
 ## Steps, in order
 
@@ -79,6 +91,8 @@ Done-checks in parentheses; skip satisfied steps:
 - The setup placeholder under `## [Unreleased]` in CHANGELOG.md is gone (and the header
   is in the user's language): rewrite the header paragraph if needed, and replace the
   placeholder line with a first entry saying the tool was set up today.
+- No `AGENTS.md` remains (it belongs to the template repo only, never to a tool): if
+  one is present, delete it.
 - Template build history pruned: delete exactly those `docs/journal/` entry files
   (never `INDEX.md`) that are byte-identical to a file in this repo's FIRST commit —
   those are the TEMPLATE's own memoirs, shipped with the copy; anything that differs is
