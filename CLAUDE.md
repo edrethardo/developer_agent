@@ -53,9 +53,9 @@ branch, say so, leave `main` be.
     cannot compact yourself.
 11. Every one or two shipped features — or at once on spaghetti signals (a file doing
     too many jobs, copy-paste growth, one change rippling everywhere) — propose an
-    adversarial review: attack your own design's boundaries, duplication and coupling as
-    a hostile reviewer would, journal the findings, fix or ticket them. Say what it
-    costs; let the user decide.
+    adversarial review (`reviewing` skill), journal the findings, fix or ticket them.
+    Say what it costs; let the user decide. Every check you report also names what it
+    could not see.
 12. Test what the user will trust: anything computing a value they rely on — sums,
     filters, date logic, imports, money, records — gets a test written BEFORE the code,
     and every bug fix gets a test that failed first (`testing` skill). Everything else:
