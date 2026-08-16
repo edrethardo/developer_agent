@@ -1,7 +1,7 @@
 ---
 name: testing
 description: Use before writing any logic the user will trust — sums, filters, imports, anything money- or record-shaped — and before claiming that anything works.
-version: 4
+version: 5
 ---
 
 # Testing
@@ -41,6 +41,29 @@ read their file where it lives, take the shape, and invent rows that match it.
 `docs/dev/stack.md`). The user must be able to say "run the checks" in plain language
 and get a clear answer: what passed, what failed, and what that means for them — never
 raw runner output, never a terminal instruction.
+
+## Tests touch nothing outside a temp directory
+
+A test run must be repeatable and harmless. If running the suite can change or
+destroy something the user cares about, the suite is a liability — and the damage
+is usually invisible, because it happens where `git status` cannot see it.
+
+- **List the write paths before the first test.** Everything the code writes:
+  home directory, config, state and log directories (`~/.config`, `~/.local/state`,
+  `%APPDATA%`), the system temp dir, other projects, anything from an environment
+  variable. Every one of them gets redirected in tests to a fresh temp directory.
+- **A path that cannot be redirected is a bug in the code, not in the test.** Make
+  the location injectable (argument, or an environment variable the code reads)
+  and say so in the journal.
+- **Redirect where the runner actually looks.** `python -m unittest discover` does
+  NOT import `tests/__init__.py`, so isolation placed in a package init silently
+  does nothing under the default runner. Put the redirect in the test module
+  itself, BEFORE it imports the code under test, and pin that with a test.
+- **No real identifiers in fixtures.** Real record ids, real filenames, real ports
+  collide with real data. Invent values that cannot exist in production.
+- **Check afterwards, outside the repo too.** A clean `git status` proves nothing
+  about `~/.local/state`. Compare the paths you listed — modification times or
+  checksums — before and after the run, and say what you compared.
 
 ## Before saying it works
 
