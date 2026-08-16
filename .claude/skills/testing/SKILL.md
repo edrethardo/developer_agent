@@ -1,7 +1,7 @@
 ---
 name: testing
 description: Use before writing any logic the user will trust — sums, filters, imports, anything money- or record-shaped — and before claiming that anything works.
-version: 5
+version: 6
 ---
 
 # Testing
@@ -41,6 +41,27 @@ read their file where it lives, take the shape, and invent rows that match it.
 `docs/dev/stack.md`). The user must be able to say "run the checks" in plain language
 and get a clear answer: what passed, what failed, and what that means for them — never
 raw runner output, never a terminal instruction.
+
+## Test the seam, not only the unit
+
+A rule that is enforced somewhere is only as good as the call site. Test the
+place that INVOKES it, not just the logic it invokes.
+
+- **The deletion test:** pick the line that enforces the rule — the auth check,
+  the path bound, the limit — and ask "if I delete this line, does a test go
+  red?" If no, the test you need does not exist yet. Measured: deleting an
+  authentication check from a request handler left all 280 tests passing,
+  because every test called the guard function directly and none went through
+  the handler.
+- **Bounds come from the caller.** A guard is usually correct and the caller
+  usually decides what it guards. Widening the caller's bounds can open
+  everything while the guard's own tests stay green — so one test must exercise
+  the real path with the real bounds.
+- **Tests that read source text or reimplement logic do not count as proof.**
+  Asserting that a file contains a string, or mirroring browser logic in another
+  language, may support a real test but must never be the only one — a mirror
+  drifts silently, and a scraped constant with a fallback default keeps testing
+  the old value after a rename.
 
 ## Tests touch nothing outside a temp directory
 
