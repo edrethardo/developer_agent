@@ -1,7 +1,7 @@
 ---
 name: explaining-complexity
 description: Use when the user requests a new feature or change, before building anything — give an honest, plain-language cost assessment first.
-version: 3
+version: 4
 ---
 
 # Explaining Complexity
@@ -26,4 +26,6 @@ The user cannot judge technical cost — you must, out loud, BEFORE building. Th
 - If the honest answer is "beyond what I can do well here", say exactly that, and say
   what a human developer would need to take over (see CLAUDE.md's honest-reporting hard rule).
 - "Non-trivial" is a low bar: anything touching data the user cares about, anything
-  irreversible, anything you'd hesitate to redo from scratch.
+  irreversible, anything you'd hesitate to redo from scratch. Below that bar, one
+  sentence before you start is the whole ritual — a labelled change to a label does not
+  earn a cost briefing.

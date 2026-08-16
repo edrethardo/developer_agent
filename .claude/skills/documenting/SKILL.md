@@ -1,7 +1,7 @@
 ---
 name: documenting
 description: Use after any user-visible change or architectural decision — update user docs, dev docs, CHANGELOG and the indexes in the same session as the change.
-version: 3
+version: 4
 ---
 
 # Documenting
@@ -17,8 +17,9 @@ Docs updated "later" are docs never updated. Same session, same commit as the ch
   that decided it (relative markdown link).
 - `CHANGELOG.md` — only if this project keeps one (an adopted project may deliberately
   not; its CLAUDE.md says so). The user's language, https://keepachangelog.com style, newest first.
-  What changed FOR THE USER. Internal refactors, test-only and doc-only changes are
-  omitted.
+  What changed FOR THE USER — if they would not notice it, it does not belong there.
+  Internal refactors, test-only and doc-only changes are omitted, and so is a fix so
+  small the user never saw the problem.
 
 ## Frontmatter — every file in docs/user/ and docs/dev/
 

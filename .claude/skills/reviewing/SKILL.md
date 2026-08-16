@@ -1,7 +1,7 @@
 ---
 name: reviewing
 description: Use when writing acceptance criteria, when about to report something as verified or done, and when the hard rules call for an adversarial review — every check has to say what it cannot see.
-version: 3
+version: 4
 ---
 
 # Reviewing
@@ -72,7 +72,8 @@ reviewed by whoever handed it over, before it is accepted:
 
 ## Doing an adversarial review
 
-When the hard rules call for one, or the user asks:
+Not for a couple of scripts — a design review needs a design. Once the tool spans
+several files, or when the hard rules call for one, or the user asks:
 
 1. Say what it costs before starting, and let the user decide.
 2. Attack, do not survey: hunt for what breaks, in which concrete scenario, for

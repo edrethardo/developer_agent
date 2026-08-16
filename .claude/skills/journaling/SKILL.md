@@ -1,7 +1,7 @@
 ---
 name: journaling
 description: Use at session end, after completing or abandoning any task, or when an approach fails — record what happened in docs/journal/ so no future session re-investigates it.
-version: 3
+version: 4
 ---
 
 # Journaling
@@ -43,6 +43,8 @@ the entry.
 
 ## When exactly
 
-- At session end (always, even for small sessions — three honest lines beat nothing).
+- At session end (always — but scaled: a ten-minute change earns three honest lines,
+  "nothing failed" is a complete answer to the failures section, and one index line is
+  the whole obligation. Long entries are for long or surprising work.)
 - Immediately after abandoning an approach, while the evidence is still in context.
 - After anything surprising: a wrong assumption, a tool quirk, a decision reversal.
