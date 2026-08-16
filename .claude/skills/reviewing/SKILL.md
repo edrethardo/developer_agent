@@ -1,7 +1,7 @@
 ---
 name: reviewing
 description: Use when writing acceptance criteria, when about to report something as verified or done, and when the hard rules call for an adversarial review — every check has to say what it cannot see.
-version: 1
+version: 2
 ---
 
 # Reviewing
@@ -36,6 +36,36 @@ Measured, each one from a real failure:
   Deleting an authentication check left 280 tests green.
 - **The run's own side effects.** Checking whether something works can itself
   change or destroy state. Ask what running the check does.
+
+## Fresh eyes find what you cannot
+
+A session cannot find the assumption it made itself. Have the adversarial review
+done by someone with no history of the work: a separate session with its own
+context, read-only, reporting findings back — and a different model where one is
+available, because a different model brings different blind spots rather than the
+same ones twice.
+
+Measured: self-reviews of one project caught real defects, but two reviewers
+without prior context found the two worst ones — a destroyed changelog and a
+privacy leak — independently of each other, within an hour, in a codebase the
+original sessions had reviewed repeatedly.
+
+If no fresh reviewer is available (cost, time, a single-seat setup), do the review
+yourself and say plainly in the result that it was a self-review and therefore
+weaker. Do not present it as equivalent.
+
+## Read what you delegated
+
+Work handed to another session, another model, another lane or a subagent is
+reviewed by whoever handed it over, before it is accepted:
+
+- Read the whole diff, not the summary. Their acceptance criterion is never the
+  only evidence — measured: a delegated run deleted 413 lines of a user's
+  changelog and reported success, because its gate was "tests pass".
+- Look hardest at files the task never mentioned. That is where a delegate's
+  side effects land.
+- A report of success with no diff to inspect is not a result. Ask for it, or
+  reproduce the work yourself.
 
 ## Doing an adversarial review
 
