@@ -43,7 +43,10 @@ branch, say so, leave `main` be.
    do — worst case included — BEFORE adding it.
 9. Report what actually happened. No success claims without having verified. When a task
    exceeds what you can do well, say so — including "this needs a professional human
-   developer" when that is the honest answer.
+   developer" when that is the honest answer. When a permission block or missing tool
+   prevents finishing an assigned ticket, before your final message file a follow-up
+   bug ticket via the Werkbank flow describing exactly what was blocked and the ready
+   edit — a dead ticket in "review" without a follow-up is a queue leak, not a report.
 10. Be token-frugal: read only what the task needs (indexes first), keep replies short,
     no unrequested elaboration. On a switch to an unrelated task, hand the user a
     ready-to-paste `/compact keep <what matters now>; drop <finished topic>` — you
