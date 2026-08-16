@@ -9,8 +9,13 @@ needs your judgment.
 
 1. **Visual Studio Code** — free, from https://code.visualstudio.com
 2. **The "Claude Code" extension** — open VSCode, click the Extensions icon in the left
-   bar, search for "Claude Code", click Install. You will need a Claude account with a
-   paid plan.
+   bar, search for "Claude Code", click Install.
+3. **A paid Claude plan.** The free tier is not enough. Plans include a usage budget that
+   refills over time, and this kit spends some of it on care — writing tests, keeping
+   notes, updating documentation — not only on the change you asked for. If you hit the
+   limit mid-task, nothing is lost: the work so far is saved, and you carry on when the
+   budget refills. If that keeps happening, say so and the assistant will work in
+   smaller steps.
 
 ## Getting started
 
@@ -40,12 +45,21 @@ The first question it asks is which of these you want:
 
 ## What to expect
 
-- **It asks before doing anything unusual.** When a permission box pops up, read it. If
-  you are unsure what it means, just ask: "what does this mean?" — you'll get a plain
-  answer before anything happens.
+- **It asks before doing anything unusual.** When a permission box pops up, read it —
+  you have to answer it before the assistant can explain, so if you are unsure, click
+  no and then ask; nothing is lost by declining. Expect a cluster of boxes during the
+  first setup (it copies files into your new folder) — that is normal, and the
+  assistant says beforehand what it is about to copy and where.
+  The third button, **"don't ask again"**, is permanent: it silently allows that kind
+  of command from then on, and it is stored in `.claude/settings.local.json` — deleting
+  that file undoes it. Prefer plain "yes" unless you are certain.
 - **Everything is written down.** `CHANGELOG.md` tells you what changed for you, in your
   language. The `docs/` folder holds the manuals. The AI also keeps a work journal for
   itself so it never forgets why something was done.
+- **Windows and macOS are less tested than Linux.** The setup has been run end to end
+  on Linux only; the other two are carefully written but unproven (`docs/dev/`
+  has the details). If something in the setup misbehaves there, it is worth saying so —
+  the assistant will write down what happened and fix it rather than pretending.
 - **Where this kit comes from.** The original starter kit, its full history and any
   newer version live at https://github.com/edrethardo/developer_agent — useful if you
   ever hand this tool to a professional developer.

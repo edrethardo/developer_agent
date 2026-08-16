@@ -119,11 +119,14 @@ Done-checks in parentheses; skip satisfied steps:
 
 Skip if a `docs/journal/*-init.md` entry already exists (this ran before). One short
 paragraph, user's language, own message, BEFORE the installs below cause any permission
-boxes: routine work runs without asking; unusual actions show a permission box; a box
-means "stop and consider" — the user can always ask "what does this mean?" and get a
-plain answer first. Adding something to the always-allowed list is possible, and the
-worst case gets explained before it happens (the allowlist rule in CLAUDE.md's hard
-rules).
+boxes: routine work runs without asking; unusual actions show a box. Say the three
+things a first-time user cannot know — (a) a box must be answered before you can
+explain it, so declining and then asking costs nothing; (b) the next few boxes are this
+setup copying files into their new folder, which is expected; (c) the third button
+("don't ask again") is permanent, lands in `.claude/settings.local.json`, and deleting
+that file undoes it — plain "yes" is the safer habit. Adding something to the
+always-allowed list later is possible, and its worst case gets explained first (the
+allowlist rule in CLAUDE.md's hard rules).
 
 ### 5. Make this repo self-contained
 
