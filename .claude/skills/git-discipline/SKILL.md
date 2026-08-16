@@ -1,7 +1,7 @@
 ---
 name: git-discipline
 description: Use before starting work, after reaching any working state, at session end, and when the user asks to undo or go back — keeps every change recoverable and the history readable.
-version: 4
+version: 5
 ---
 
 # Git Discipline
@@ -15,6 +15,17 @@ backup (see below).
 - `main` is the working branch; commit directly for routine work.
 - Commit at every working state — "working" means the checks pass (`testing` skill),
   not merely that the file was saved. Small commits beat big ones.
+- **Before every commit, read your own diff.** `git status --short` and
+  `git diff --stat` (or `--cached`), then three questions: is a file in there I
+  did not mean to touch? does it delete something I did not mean to delete? does
+  the size match what I actually did? Any unexpected deletion or unexpected file
+  STOPS the commit — look at what happened and tell the user what you found.
+  Measured why: a run once cut a user's CHANGELOG from 428 lines to 30 and
+  shipped it green, because its check was "tests pass" and no test can see a
+  deleted document; the next commit touched that same file and still missed it.
+- **A shared file you did not create — a changelog, a manual, an index — gets a
+  glance before you commit it**: is it still as long as it was, is its beginning
+  still there? You are editing something the user reads.
 - Message format: first line = what changed for the tool; body = why, when the why isn't
   obvious. English. Written so a future session — or a hired developer — can follow the
   history without asking anyone.
