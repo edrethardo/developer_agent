@@ -1,7 +1,7 @@
 ---
 name: testing
 description: Use before writing any logic the user will trust — sums, filters, imports, anything money- or record-shaped — and before claiming that anything works.
-version: 6
+version: 7
 ---
 
 # Testing
@@ -29,6 +29,21 @@ For anything in the "gets a test" list:
 3. Write the smallest code that makes it pass.
 4. Run it again. Green.
 5. Tidy the code with the test still green, then commit test and code together.
+
+**Leave proof that step 2 happened**, in one of two forms — otherwise do not claim
+test-first at all:
+
+- commit the failing test on its own first ("test for X: fails until the fix"), or
+- paste the real failure output — the actual assertion, verbatim, not a paraphrase —
+  into the journal entry.
+
+Why the bar: in one project's 144 commits, not a single one added a test before its
+implementation; test and code always landed together, so the claim was unverifiable
+from the history while the journals asserted red-then-green. Its bug fixes were the
+opposite — 14 of 15 shipped a test, and reconstructing the parent tree showed the new
+test genuinely failing before the fix. Write "test and code together" honestly rather
+than a red-green story nobody can check; the honest-reporting hard rule applies to
+your own process too.
 
 Ask the user to DESCRIBE a real case early — the columns, a typical row, the awkward
 one that breaks things — and build the test data from that description. Never copy their
