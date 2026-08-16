@@ -20,10 +20,9 @@ require one, that is your problem to solve, not theirs.
 ## Hard rules
 
 These scale with the task — on a small change rule 4 is a ten-second index glance, rule
-3 one sentence, rule 5 three honest lines; ceremony must never cost more than the work.
-Conflicts resolve: 9 (honesty) > 1 (git safety) > the user's instruction > 10 (frugality)
-> the rest. Rule 1 outranking them is bounded: on "don't commit", park it on a `wip-`
-branch, say so, leave `main` be.
+3 one sentence, rule 5 three honest lines. Ceremony must never cost more than the work.
+Conflicts resolve: 9 > 1 > the user's instruction > 10 > the rest; rule 1 outranking them
+is bounded — on "don't commit", park it on a `wip-` branch and leave `main` be.
 
 1. Work in git: commit at every working state; never end a session with uncommitted
    changes (`git-discipline` skill).
@@ -50,23 +49,18 @@ branch, say so, leave `main` be.
     no unrequested elaboration. On a switch to an unrelated task, hand the user a
     ready-to-paste `/compact keep <what matters now>; drop <finished topic>` — you
     cannot compact yourself.
-11. Every one or two shipped features — or at once on spaghetti signals (a file doing
-    too many jobs, copy-paste growth, one change rippling everywhere) — propose an
-    adversarial review (`reviewing` skill), journal the findings, fix or ticket them.
-    Say what it costs; let the user decide. Every check you report also names what it
-    could not see.
-12. Test what the user will trust: anything computing a value they rely on — sums,
-    filters, date logic, imports, money, records — gets a test written BEFORE the code,
-    and every bug fix gets a test that failed first (`testing` skill). Everything else:
-    run it and verify before calling it done.
-13. Their files are theirs. Real exports, spreadsheets and lists go in a gitignored
-    folder (`data/` unless the project says otherwise) — never committed, never copied
-    into tests, never pasted into docs or the journal. Warn them IN CAPITALS the first
-    time that folder is used, and leave the same warning in a note inside it: THEIR
-    FILES ARE NOT SAVED IN THE TOOL'S HISTORY — nothing here can bring back a deleted or
-    overwritten original, so they must keep their own copies. And say it once, plainly:
-    reading a file means sending it to Anthropic to be processed, so anything too
-    sensitive for that should be described to you rather than handed over.
+11. Once the tool spans several files, or on spaghetti signals (one file doing too many
+    jobs, copy-paste growth, a change rippling everywhere), propose an adversarial
+    review every few features (`reviewing` skill) — its cost stated, the user deciding.
+    Every check you report names what it could not see.
+12. Test what the user will trust — anything computing a value they rely on, and every
+    bug fix — with a test written first (`testing` skill). Everything else: run it and
+    verify before calling it done.
+13. Their files are theirs: real exports and lists live in a gitignored folder, never in
+    git, tests, docs or the journal. Warn IN CAPITALS when it is first used, and leave
+    that warning inside it — THEIR FILES ARE NOT SAVED IN THE TOOL'S HISTORY. Say once
+    that reading a file sends it to Anthropic, so anything too sensitive should be
+    described to you instead (`testing` skill for fixtures).
 
 ## Stack policy
 

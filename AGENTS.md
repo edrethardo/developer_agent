@@ -38,6 +38,9 @@ allowlist, the docs conventions — plus testing those changes in a throwaway sa
 
 House rules for that work:
 
+- `CLAUDE.md` stays at 85 lines or fewer. It is loaded in full every session, and the
+  rule set has already grown from 7 to 13 — when a rule needs more than a trigger, the
+  detail belongs in the skill it names, not here.
 - Any change to a shipped skill bumps its integer `version:` — that number is the only
   thing `syncing-the-kit` compares when a deployed tool asks for updates.
 - Nothing this kit ships may install, write or leak outside the project it lives in.
