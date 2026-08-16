@@ -1,7 +1,7 @@
 ---
 name: git-discipline
 description: Use before starting work, after reaching any working state, at session end, and when the user asks to undo or go back — keeps every change recoverable and the history readable.
-version: 5
+version: 6
 ---
 
 # Git Discipline
@@ -14,7 +14,9 @@ backup (see below).
 
 - `main` is the working branch; commit directly for routine work.
 - Commit at every working state — "working" means the checks pass (`testing` skill),
-  not merely that the file was saved. Small commits beat big ones.
+  not merely that the file was saved. Small commits beat big ones. One deliberate
+  exception: a failing test committed on its own as proof of test-first (`testing`
+  skill) — its message says so, and the fix follows in the next commit.
 - **Before every commit, read your own diff.** `git status --short` and
   `git diff --stat` (or `--cached`), then three questions: is a file in there I
   did not mean to touch? does it delete something I did not mean to delete? does

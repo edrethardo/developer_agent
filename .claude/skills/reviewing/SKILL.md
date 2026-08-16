@@ -1,7 +1,7 @@
 ---
 name: reviewing
 description: Use when writing acceptance criteria, when about to report something as verified or done, and when the hard rules call for an adversarial review — every check has to say what it cannot see.
-version: 2
+version: 3
 ---
 
 # Reviewing
@@ -50,9 +50,12 @@ without prior context found the two worst ones — a destroyed changelog and a
 privacy leak — independently of each other, within an hour, in a codebase the
 original sessions had reviewed repeatedly.
 
-If no fresh reviewer is available (cost, time, a single-seat setup), do the review
-yourself and say plainly in the result that it was a self-review and therefore
-weaker. Do not present it as equivalent.
+In this setup that realistically means one of three, in descending strength: a
+different model if the user has one; otherwise a fresh subagent with no history of the
+work, which at least has not made your assumptions even if it shares your habits; and
+if neither is possible (cost, time, a single seat), do the review yourself and say
+plainly in the result that it was a self-review and therefore weaker. Never present a
+self-review, or a subagent's, as an independent one.
 
 ## Read what you delegated
 

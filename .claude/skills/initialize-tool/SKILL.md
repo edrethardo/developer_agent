@@ -37,9 +37,9 @@ a. **A new project.** Ask where it should live — a folder OUTSIDE this repo, e
    `../spesenpruefer` next to it, or anywhere they like. Refuse a path inside this repo
    and say why in one sentence; offer a sibling folder instead. Then create that folder
    and copy the configuration into it: `.claude/` (settings and all skills), `CLAUDE.md`,
-   `CHANGELOG.md`, `.gitignore`, and `docs/` with its `INDEX.md`, `TAGS.md`, `TAGS`-tagged
-   conventions and `journal/INDEX.md` — the journal index keeps its
-   `<!-- UNINITIALIZED -->` marker, which is what continues setup over there. Do NOT copy
+   `CHANGELOG.md`, `.gitignore`, and the whole `docs/` tree as it stands — its indexes,
+   `TAGS.md`, and `dev/os-coverage.md`, which the index refers to. The journal index
+   keeps its `<!-- UNINITIALIZED -->` marker, which is what continues setup over there. Do NOT copy
    `AGENTS.md`, `LICENSE`, this `README.md`, or anything under `.git/`. Writing outside
    this repo shows permission boxes; say in one sentence what you are copying and where.
    Then stop and tell them: open THAT folder in VSCode and say hello — setup finishes
@@ -172,7 +172,8 @@ Two things to record so later sessions know what this repo is:
        "kit_version": "<the version: of initialize-tool>", "initialized": "YYYY-MM-DD"}
 
   `syncing-the-kit` reads this later; `kit_origin` becomes a local path instead if the
-  user keeps a copy of the kit on disk.
+  user keeps a copy of the kit on disk. It is written here and swept up by the closing
+  commit in step 6 — the personalization commit in step 3 has already happened.
 
 ### 6. Close out
 

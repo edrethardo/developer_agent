@@ -1,7 +1,7 @@
 ---
 name: testing
 description: Use before writing any logic the user will trust — sums, filters, imports, anything money- or record-shaped — and before claiming that anything works.
-version: 7
+version: 8
 ---
 
 # Testing
@@ -91,10 +91,12 @@ is usually invisible, because it happens where `git status` cannot see it.
 - **A path that cannot be redirected is a bug in the code, not in the test.** Make
   the location injectable (argument, or an environment variable the code reads)
   and say so in the journal.
-- **Redirect where the runner actually looks.** `python -m unittest discover` does
-  NOT import `tests/__init__.py`, so isolation placed in a package init silently
-  does nothing under the default runner. Put the redirect in the test module
-  itself, BEFORE it imports the code under test, and pin that with a test.
+- **Redirect where the runner actually looks.** Whether a package `__init__.py` runs
+  depends on the invocation — measured on CPython 3.10: `python -m unittest discover`
+  imports `tests/__init__.py`; `discover -s tests` does NOT; `discover -s tests -t .`
+  does again; `pytest tests/` does not. So isolation placed in a package init is
+  silently absent under some perfectly normal commands. Put the redirect in the test
+  module itself, BEFORE it imports the code under test, and pin that with a test.
 - **No real identifiers in fixtures.** Real record ids, real filenames, real ports
   collide with real data. Invent values that cannot exist in production.
 - **Check afterwards, outside the repo too.** A clean `git status` proves nothing

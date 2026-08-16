@@ -32,7 +32,7 @@ not a note to self.
 
 ## What work does belong here
 
-Improving the template: the seven skills, the hard rules, the init flow, the permission
+Improving the kit: its eleven skills, the hard rules, the init flow, the permission
 allowlist, the docs conventions — plus testing those changes in a throwaway sandbox
 (fake `HOME`, a scratch copy of this repo, never the real `~/.claude`).
 

@@ -1,7 +1,7 @@
 ---
 name: adopting-a-project
 description: Use when the user wants this developer-agent setup added to a project they already have, or when they start working on code that lives in another folder — installs the configuration into their repo without breaking what is already there.
-version: 4
+version: 5
 ---
 
 # Adopting an Existing Project
@@ -11,12 +11,18 @@ works; nothing of theirs may be lost, overwritten, or silently changed.
 
 ## Work in THEIR folder, not from the kit
 
-Everything below happens in the user's project, with their git. If this session is
-still sitting in the starter-kit folder, copy `.claude/skills/` and
-`.claude/settings.json` across as the first act, then ask the user to open THEIR project
-in VSCode and say hello — the rest of this skill runs there, where it can see their
-files and their history. Running it at a distance from the kit folder branches the wrong
-repo and leaves their work with no undo.
+Everything below happens in the user's project, with their git. Running it at a
+distance from the kit folder branches the wrong repo and leaves their work with no undo.
+
+If this session is still sitting in the starter-kit folder, do the checks below first
+(they only need to read their project), then copy ONLY `.claude/skills/` — never
+`settings.json`, whose merge needs the collision conversation further down — plus a
+`.developer-agent.json` recording `{"role": "adopting", "kit_origin": "<this folder>"}`.
+That file is the handoff: ask the user to open THEIR project in VSCode and say
+"weiter mit der Einrichtung" / "continue the setup", and the session there picks this
+skill up again, sees `role: adopting`, and resumes at "What gets added". Do not leave
+without saying that sentence — a half-installed setup that nobody knows about is worse
+than none.
 
 ## Before touching anything
 
